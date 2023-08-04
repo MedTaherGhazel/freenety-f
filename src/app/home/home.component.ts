@@ -15,7 +15,7 @@ import { RouterLink } from '@angular/router';
   <ul>
     <li><a href="#">About us</a></li>
     <li><a href="#">Contact</a></li>
-    <li><img [src]="imageUrl" alt="free"></li>
+    <li><img src="../../assets/images/freenety.png" alt="free" height="50"></li>
     <li><a [routerLink]='["/signin"]'>Login</a></li>
     <li><a href="#">Sign up</a></li>
   </ul>
