@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   template: `
-  <h1>Freenety</h1>
+  <a href=""><h1>Freenety</h1></a>
      <div class="wrapper">
   <div class="rec-prism">
     <div class="face face-front">

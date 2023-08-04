@@ -1,0 +1,111 @@
+$prism-height: 350px;
+$prism-length: 250px;
+$prism-depth: $prism-length;
+$spacing: 20px;
+$br: 3px;
+$font:Tahoma, Verdana, Segoe, sans-serif;
+
+$text-light: #fff;
+$text-dark: #666;
+$blue: #03a9f4;
+$smoke: #f9f9fa;
+$coral: #ff5751;
+$navy-blue: #07ad90;
+$green: #07ad90;
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 57px auto 0;
+  border: 5px solid $green;
+  border-radius: 5px;
+  width: $prism-height*2;
+  height: $prism-height;
+
+}
+  h1{
+    color:$green ;
+    font-family: $font;
+    text-align: center;
+    border: left 50px; ;
+  }
+.card {
+  box-shadow: 0 3px 10px 0 #aaa;
+  cursor: pointer;
+  height: 200px;
+  position: relative;
+  width: 243px;
+  margin: auto;
+
+  content: 50%;
+  &:hover {
+    box-shadow: 5px 5px 20px $green;
+  }&:checked {
+    background: var($green);
+    border-color: var($green);
+  }
+
+}
+
+
+.card h2{
+  font-size: 20px;
+  font-weight: bold;
+  font-family: Tahoma, Verdana, Segoe, sans-serif;
+  top: 100%;
+  text-align: center;
+  text-emphasis-position: 50px;
+}
+
+img {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 50%;
+}
+
+button {
+  width: 200px;
+  margin-left: 70%;
+  background: transparent;
+  line-height: 3em;
+  border: 1px solid $green;
+  background-color: $green;
+  border-radius: $spacing;
+
+}
+.card.visited {
+  box-shadow: 0 3px 10px 2px #444;
+}
+
+@media (max-width: 1100px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+    width: calc(280px * 2);
+  }
+
+  .card {
+    margin: 0 auto 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+    width: calc(280px * 1);
+    height: calc(280px * 2);
+    display: list-item;
+
+  }
+
+  .card {
+    margin: 0 auto 2rem;
+  }
+
+  button {
+    margin-left: 16%;
+
+  }
+}
+
