@@ -1,3 +1,19 @@
+$prism-height: 550px;
+$prism-length: 350px;
+$prism-depth: $prism-length;
+$spacing: 20px;
+$br: 3px;
+$font:Tahoma, Verdana, Segoe, sans-serif;
+// Colors
+$text-light: #fff;
+$text-dark: #666;
+$blue: #03a9f4;
+$smoke: #f9f9fa;
+$coral: #ff5751;
+$navy-blue: #07ad90;
+$green: #07ad90;
+
+
 nav {
   &.primary-navigation {
     margin: 0 auto;
@@ -67,7 +83,33 @@ padding-left: 0;
     }
   }
 }
+// .card {
+//   /* Add shadows to create the "card" effect */
+//   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+//   transition: 0.3s;
+//   width: 60%;
+//   margin: auto;
+//   img{
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     bottom: 0;
+//     left: 0;
+//     background-size: cover;
+//     background-position: center;
+//     transition: transform .2s;
+//   }
+// }
 
+// /* On mouse-over, add a deeper shadow */
+// .card:hover {
+//   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+// }
+
+// /* Add some padding inside the card container */
+// .container {
+//   padding: 2px 16px;
+// }
 a {
 
     text-decoration: none;
@@ -105,24 +147,36 @@ $color_grey_dark: #a2a2a2;
 .blog-card {
   display: flex;
   flex-direction: column;
-  margin: 1rem auto;
-  box-shadow: 0 3px 7px -1px rgba(#000, .1);
+  margin: 5rem auto;
+  box-shadow: 0 3px 7px 1px rgba($green, 10);
   margin-bottom: 1.6%;
   background: $color_white;
-  line-height: 1.4;
+  line-height: 2.4;
   font-family: sans-serif;
   border-radius: 5px;
   overflow: hidden;
   z-index: 0;
+  background-image: linear-gradient($green, $color_grey_dark);
   a {
     color: inherit;
     &:hover {
       color: $color_prime;
     }
   }
+  button{
+
+    width: 20%;
+      border: none;
+      line-height: 2em;
+      border: 1px solid $green;
+      color: white;
+      background-color: #07ad90;
+      border-radius: 15px;
+      font-family: $font bold;
+  }
   &:hover {
     .photo {
-      transform: scale(1.3) rotate(3deg);
+      transform: scale(0.9) translate(10%);
     }
   }
   .meta {
@@ -131,14 +185,15 @@ $color_grey_dark: #a2a2a2;
     height: 200px;
   }
   .photo {
-    position: absolute;
+    position: relative;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     background-size: cover;
     background-position: center;
-    transition: transform .2s;
+    transition: transform .9s;
+
   }
   .details,
   .details ul {
@@ -159,6 +214,7 @@ $color_grey_dark: #a2a2a2;
     padding: 10px;
     width: 100%;
     font-size: .9rem;
+
     a {
       text-decoration: dotted underline
     }
@@ -196,9 +252,10 @@ $color_grey_dark: #a2a2a2;
     background: $color_white;
     position: relative;
     z-index: 1;
+
     h1,
     h2 {
-      font-family: Poppins, sans-serif;
+      font-family: $font;
     }
     h1 {
       line-height: 1;
@@ -293,3 +350,58 @@ $color_grey_dark: #a2a2a2;
     }
   }
 }
+
+
+.footer{
+  background:$green;
+  padding:30px 230px;
+  font-family: 'Play', sans-serif;
+  text-align:center;
+  }
+
+  .footer .row{
+  width:100%;
+  margin:1% 0%;
+  padding:0.6% 0%;
+  color:rgb(255, 255, 255);
+  font-size:0.8em;
+  }
+
+  .footer .row a{
+  text-decoration:none;
+  color:rgb(255, 255, 255);
+  transition:0.5s;
+  }
+
+  .footer .row a:hover{
+  color:#fff;
+  }
+
+  .footer .row ul{
+  width:100%;
+  }
+
+  .footer .row ul li{
+  display:inline-block;
+  margin:0px 30px;
+  }
+
+  .footer .row a i{
+  font-size:2em;
+  margin:0% 1%;
+  }
+
+  @media (max-width:720px){
+  .footer{
+  text-align:left;
+  padding:5%;
+  }
+  .footer .row ul li{
+  display:block;
+  margin:10px 0px;
+  text-align:left;
+  }
+  .footer .row a i{
+  margin:0% 3%;
+  }
+  }

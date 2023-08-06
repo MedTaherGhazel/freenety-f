@@ -22,56 +22,78 @@ import { RouterLink } from '@angular/router';
 </nav>
 
 
+<!-- <div class="card">
+  <img src="../../assets/images/ag.png" alt="Avatar" >
+  <div class="container">
+    <h4><b>John Doe</b></h4>
+    <p>Architect & Engineer</p>
+  </div>
+</div> -->
 
 <div class="blog-card">
     <div class="meta">
-      <div class="photo" style="background-image: url(https://storage.googleapis.com/chydlx/codepen/blog-cards/image-1.jpg)"></div>
-      <ul class="details">
+      <div class="photo"><img src="../../assets/images/ag.png" alt=""></div>
+      <!-- <ul class="details">
         <li class="author"><a href="#">John Doe</a></li>
         <li class="date">Aug. 24, 2015</li>
         <li class="tags">
-          <ul>
-            <li><a href="#">Learn</a></li>
-            <li><a href="#">Code</a></li>
-            <li><a href="#">HTML</a></li>
-            <li><a href="#">CSS</a></li>
-          </ul>
+
         </li>
-      </ul>
+      </ul> -->
     </div>
     <div class="description">
-      <h1>Learning to Code</h1>
-      <h2>Opening a door to the future</h2>
-      <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.</p>
+      <br>
+      <h1>Your gateway to creative collaboration and professional success.</h1>
+      <p>Freenety, the freelance platform that connects talents from around the world to exciting projects. Find the best freelancers or discover career opportunities</p>
       <p class="read-more">
-        <a href="#">Read More</a>
+       <button>Join now</button>
       </p>
     </div>
   </div>
   <div class="blog-card alt">
     <div class="meta">
-      <div class="photo" style="background-image: url(https://storage.googleapis.com/chydlx/codepen/blog-cards/image-2.jpg)"></div>
-      <ul class="details">
-        <li class="author"><a href="#">Jane Doe</a></li>
-        <li class="date">July. 15, 2015</li>
-        <li class="tags">
-          <ul>
-            <li><a href="#">Learn</a></li>
-            <li><a href="#">Code</a></li>
-            <li><a href="#">JavaScript</a></li>
-          </ul>
-        </li>
-      </ul>
+      <div class="photo"><img src="../../assets/images/money.png" alt=""></div>
     </div>
     <div class="description">
-      <h1>Mastering the Language</h1>
-      <h2>Java is not the same as JavaScript</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.</p>
+      <h1>Earn money and increase your income in convertible coins.</h1>
+<p>showcase your skills and land relevant projects, join now for financial success and digital value!</p>
       <p class="read-more">
         <a href="#">Read More</a>
       </p>
     </div>
   </div>
+
+  <!--FONT AWESOME-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!--GOOGLE FONTS-->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap" rel="stylesheet">
+
+<footer>
+<div class="footer">
+<div class="row">
+<a href="#"><i class="fa fa-facebook"></i></a>
+<a href="#"><i class="fa fa-instagram"></i></a>
+<a href="#"><i class="fa fa-youtube"></i></a>
+<a href="#"><i class="fa fa-twitter"></i></a>
+</div>
+
+<div class="row">
+<ul>
+<li><a href="#">Contact us</a></li>
+<li><a href="#">Our Services</a></li>
+<li><a href="#">Privacy Policy</a></li>
+<li><a href="#">Terms & Conditions</a></li>
+<li><a href="#">Career</a></li>
+</ul>
+</div>
+
+<div class="row">
+INFERNO Copyright © 2021 Inferno - All rights reserved || Designed By: Mahesh
+</div>
+</div>
+</footer>
 `,
   styleUrls: ['./home.component.scss']
 })

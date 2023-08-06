@@ -1,10 +1,10 @@
 // Dimensions
-$prism-height: 350px;
-$prism-length: 250px;
+$prism-height: 550px;
+$prism-length: 350px;
 $prism-depth: $prism-length;
 $spacing: 20px;
 $br: 3px;
-
+$font:Tahoma, Verdana, Segoe, sans-serif;
 // Colors
 $text-light: #fff;
 $text-dark: #666;
@@ -16,7 +16,7 @@ $green: #07ad90;
 
 h1{
   font-family: Tahoma,Verdana,Segoe,sans-serif;
-  color: $green;
+  color: black;
   font-size: 20px;
   padding: 10px;
   text-align: center;
@@ -34,7 +34,7 @@ h2{
 label{
   font-family: Tahoma,Verdana,Segoe,sans-serif;
   color: #8a8a8a;
-  font-size: 18px;
+  font-size: 20px;
   padding: $spacing;
   text-align: center;
 
@@ -66,21 +66,33 @@ label{
       font-size: 1.2em;
       color: $green;
     }
+    button{
+      width: 100%;
+        border: none;
+        line-height: 2em;
+        border: 1px solid $green;
+        color: white;
+        background-color: #07ad90;
+        border-radius: 15px;
+        font-family: $font bold;
+    }
     .field-wrapper{
       margin-top: $spacing*1.5;
       position: relative;
 
+
+
       label{
         position: absolute;
         pointer-events: none;
-        font-size: 0.85em;
+        font-size: 17px;
         top: 40%;
         left: 0;
         transform: translateY(-50%);
         transition: all ease-in 0.25s;
         color: lighten($text-dark, 20%);
       }
-      input[type="text"], input[type="password"], input[type="submit"], textarea{
+      input[type="text"], input[type="password"],input[type="email"],input[type="number"], textarea{
         -webkit-appearance: none;
         appearance: none;
         &:focus{
@@ -89,7 +101,7 @@ label{
         }
         border-radius: 10px;
       }
-      input[type="text"], input[type="password"], textarea{
+      input[type="text"], input[type="password"],input[type="email"],input[type="number"], textarea{
         width: 100%;
         border: none;
         background: transparent;
@@ -144,5 +156,49 @@ label{
           }
         }
       }
+
+      .fullname input[type="text"] {
+        width: 48%; /* Adjust the width as needed */
+        border: none;
+        margin-left: 5px ;
+        background: transparent;
+        line-height: 2em;
+        border: 1px solid $green;
+        color: $text-dark;
+
+        &::-webkit-input-placeholder {
+          opacity: 0;
+        }
+        &::-moz-placeholder {
+          opacity: 0;
+        }
+        &:-ms-input-placeholder {
+          opacity: 0;
+        }
+        &:-moz-placeholder {
+          opacity: 0;
+        }
+        &:focus,
+        &:not(:placeholder-shown) {
+          + label {
+            top: -35%;
+            color: $navy-blue;
+          }
+        }
+      }
+
+      .last-label  {
+        margin-left: 50%;
+        position: absolute;
+        pointer-events: none;
+        font-size: 0.85em;
+        top: 40%;
+        left: 70;
+        font-size: 17px;
+        transform: translateY(-50%);
+        transition: all ease-in 0.25s;
+        color: lighten($text-dark, 20%);
+      }
+
     }
   }

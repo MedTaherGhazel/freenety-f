@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -24,19 +25,36 @@ import { CommonModule } from '@angular/common';
     </div>
   </label>
   <div class="field-wrapper">
-    <button>{{ createAccountButtonText }}</button>
+    <button [disabled]="!selectedOption" (click)="redirectToSignup()">{{ createAccountButtonText }}</button>
   </div>
+
 </div>
 
   `,
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent {
-  selectedOption: string = 'freelancer';
-  createAccountButtonText: string = 'Create account as freelancer';
+  selectedOption: string = '';
+  createAccountButtonText: string = 'select your role';
+  constructor(private router: Router) {}
 
   onSelectionChange(event: any) {
     this.selectedOption = event.target.id;
     this.createAccountButtonText = `Create account as ${this.selectedOption}`;
   }
-}
+    onFreelancerSelected() {
+      this.selectedOption = 'freelancer';
+    }
+
+    onClientSelected() {
+      this.selectedOption = 'client';
+    }
+
+    redirectToSignup() {
+      if (this.selectedOption === 'freelancer') {
+        this.router.navigate(['/signup-freelancer']);
+      } else if (this.selectedOption === 'client') {
+        this.router.navigate(['/signup-client']);
+      }
+    }
+  }

@@ -64,17 +64,25 @@ img {
   transform: translate(-50%, -50%);
   height: 50%;
 }
-
-button {
-  width: 200px;
-  margin-left: 70%;
-  background: transparent;
-  line-height: 3em;
-  border: 1px solid $green;
-  background-color: $green;
-  border-radius: $spacing;
-
+input{
+display: none;
 }
+  button {
+    width: 200px;
+    margin-left: 70%;
+    background: transparent;
+    line-height: 3em;
+    border: 1px solid $green;
+    background-color: $green;
+    border-radius: $spacing;
+    font-family: $font;
+    cursor: pointer;
+    color: white;
+    &:hover {
+      box-shadow: 5px 5px 20px $green;
+    }
+
+  }
 .card.visited {
   box-shadow: 0 3px 10px 2px #444;
 }
