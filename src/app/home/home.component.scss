@@ -14,75 +14,65 @@ $navy-blue: #07ad90;
 $green: #07ad90;
 
 
-nav {
-  &.primary-navigation {
-    margin: 0 auto;
-    display: block;
+/* Base styles */
+nav.primary-navigation {
+  margin: 0 auto;
+  display: block;
+  padding: 20px 0 50px 0;
+  text-align: center;
+  font-size: 18px;
+}
 
-    padding: 20px 0 50px 0;
+nav.primary-navigation ul {
+  padding: 0;
+  margin: 0;
+}
+
+nav.primary-navigation ul li {
+  list-style: none;
+  display: inline-block;
+  margin: 0;
+  padding: 0 20px;
+  position: relative;
+  text-align: center;
+  font-family: arvo;
+}
+
+nav.primary-navigation li a {
+  color: black;
+  text-decoration: none;
+}
+
+nav.primary-navigation li a:hover {
+  color: #3ca0e7;
+}
+
+nav.primary-navigation li:hover {
+  cursor: pointer;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+  nav.primary-navigation ul {
     text-align: center;
-    font-size: 18px;
+  }
 
-    ul li {
-      list-style: none;
-      margin: 0 auto;
-      // border-left: 2px solid #3ca0e7;
-      display: inline-block;
-      padding: 0 30px;
-      position: relative;
-      text-decoration: none;
-      text-align: center;
-      font-family: arvo;
-    }
+  nav.primary-navigation ul li {
+    display: block;
+    padding: 10px 0;
+  }
 
-    li a {
-      color: black;
-    }
+  nav.primary-navigation li img {
+    display: block;
+    margin: 10px auto;
+  }
 
-    li a:hover {
-      color: #3ca0e7;
-    }
-
-    li:hover {
-      cursor: pointer;
-    }
-
-    ul li ul {
-      visibility: hidden;
-      opacity: 0;
-      position: absolute;
-padding-left: 0;
-      left: 0;
-      display: none;
-      background: white;
-    }
-
-    ul li:hover > ul,
-    ul li ul:hover {
-      visibility: visible;
-      opacity: 1;
-      display: block;
-      min-width: 250px;
-      text-align: left;
-      padding-top: 20px;
-      box-shadow: 0px 3px 5px -1px #ccc;
-    }
-
-    ul li ul li {
-      clear: both;
-      width: 100%;
-      text-align: left;
-      margin-bottom: 20px;
-      border-style: none;
-    }
-
-    ul li ul li a:hover {
-      padding-left: 10px;
-      border-left: 2px solid #3ca0e7;
-      transition: all 0.3s ease;
-    }
+  nav.primary-navigation ul li a {
+    display: block;
   }
 }
+
+
 // .card {
 //   /* Add shadows to create the "card" effect */
 //   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -165,7 +155,7 @@ $color_grey_dark: #a2a2a2;
   }
   button{
 
-    width: 20%;
+    width: 40%;
       border: none;
       line-height: 2em;
       border: 1px solid $green;

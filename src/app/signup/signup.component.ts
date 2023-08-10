@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [CommonModule],
   template: `
-<a href=""><h1>Freenety</h1></a><br>
+
+<a href=""><img src="../../assets/images/freenety.png" alt=""></a>
 <h1>Are you Freenetix or Freeneter ?</h1>
 <div class="cards">
   <label class="card">

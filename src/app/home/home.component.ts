@@ -46,7 +46,7 @@ import { RouterLink } from '@angular/router';
       <h1>Your gateway to creative collaboration and professional success.</h1>
       <p>Freenety, the freelance platform that connects talents from around the world to exciting projects. Find the best freelancers or discover career opportunities</p>
       <p class="read-more">
-       <button>Join now</button>
+       <button style="width: 20%;">Join now</button>
       </p>
     </div>
   </div>
@@ -58,7 +58,7 @@ import { RouterLink } from '@angular/router';
       <h1>Earn money and increase your income in convertible coins.</h1>
 <p>showcase your skills and land relevant projects, join now for financial success and digital value!</p>
       <p class="read-more">
-        <a href="#">Read More</a>
+      <button>Get started</button>
       </p>
     </div>
   </div>
@@ -85,12 +85,12 @@ import { RouterLink } from '@angular/router';
 <li><a href="#">Our Services</a></li>
 <li><a href="#">Privacy Policy</a></li>
 <li><a href="#">Terms & Conditions</a></li>
-<li><a href="#">Career</a></li>
+<li><img src="../../assets/images/cbst.png" alt="" style="width: 70px;"></li>
 </ul>
 </div>
 
 <div class="row">
-INFERNO Copyright © 2021 Inferno - All rights reserved || Designed By: Mahesh
+Copyright © 2023 Freenety. All rights reserved.
 </div>
 </div>
 </footer>

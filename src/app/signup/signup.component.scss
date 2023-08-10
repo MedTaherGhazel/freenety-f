@@ -12,7 +12,13 @@ $smoke: #f9f9fa;
 $coral: #ff5751;
 $navy-blue: #07ad90;
 $green: #07ad90;
-
+img{
+  display: block;
+margin-left: auto;
+margin-right: auto;
+margin-top: 5%;
+width: 100px;
+}
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -55,14 +61,6 @@ $green: #07ad90;
   top: 100%;
   text-align: center;
   text-emphasis-position: 50px;
-}
-
-img {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 50%;
 }
 input{
 display: none;
