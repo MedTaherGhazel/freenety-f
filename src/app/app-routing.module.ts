@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SigninComponent } from './signin/signin.component';
+import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
-import { SignupComponent } from './signup/signup.component';
-import { SignupTalentComponent } from './signup-talent/signup-talent.component';
-import { SignupClientComponent } from './signup-client/signup-client.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import { SigninTalentComponent } from './auth/signin-talent/signin-talent.component';
+import { SigninClientComponent } from './auth/signin-client/signin-client.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent ,title: 'Home page'},
+  { path: 'login', component: LoginComponent },
   { path: 'signin', component: SigninComponent },
-  { path: 'signup', component: SignupComponent },
-  { path: 'signup-talent', component:SignupTalentComponent},
-  { path: 'signup-client', component:SignupClientComponent}
+  { path: 'signin-talent', component:SigninTalentComponent},
+  { path: 'signin-client', component:SigninClientComponent}
 ];
 
 @NgModule({

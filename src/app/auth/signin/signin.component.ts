@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss']
+  selector: 'app-signin',
+  templateUrl: './signin.component.html',
+  styleUrls: ['./signin.component.scss']
 })
-export class SignupComponent {
+export class SigninComponent {
   selectedOption: string = '';
   createAccountButtonText: string = 'select your role';
   constructor(private router: Router) {}
@@ -25,9 +25,9 @@ export class SignupComponent {
 
     redirectToSignup() {
       if (this.selectedOption === 'freelancer') {
-        this.router.navigate(['/signup-talent']);
+        this.router.navigate(['/signin-talent']);
       } else if (this.selectedOption === 'client') {
-        this.router.navigate(['/signup-client']);
+        this.router.navigate(['/signin-client']);
       }
     }
 }
