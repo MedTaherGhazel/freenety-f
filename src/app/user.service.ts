@@ -10,5 +10,7 @@ export class UserService {
     login(arg0: { username: any; password: any; }) {
       throw new Error('Method not implemented.');
     }
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) {
+      http.get
+    }
 }
