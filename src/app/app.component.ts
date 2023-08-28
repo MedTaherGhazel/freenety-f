@@ -6,22 +6,22 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   animations: [
-    trigger('openClose', [
+    trigger('@myInsertRemoveTrigger', [
       // ...
-      state('open', style({
+      state('inserted', style({
         height: '200px',
         opacity: 1,
         backgroundColor: 'yellow'
       })),
-      state('closed', style({
+      state('removed', style({
         height: '100px',
         opacity: 0.8,
         backgroundColor: 'blue'
       })),
-      transition('* => closed', [
+      transition('* => inserted', [
         animate('1s')
       ]),
-      transition('* => open', [
+      transition('* => removed', [
         animate('0.5s')
       ]),
     ]),
