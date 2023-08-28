@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { AppComponent } from '../app.component';
+import { AppComponent } from '../app/app.component';
 
-describe('AppComponent', () => {
+describe('app component test', () => {
   beforeEach(() => TestBed.configureTestingModule({
     imports: [RouterTestingModule],
     declarations: [AppComponent]
