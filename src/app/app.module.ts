@@ -7,10 +7,12 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './auth/login/login.component';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { SigninComponent } from './auth/signin/signin.component';
-import { SigninTalentComponent } from './auth/signin-talent/signin-talent.component';
-import { SigninClientComponent } from './auth/signin-client/signin-client.component';
-
+import { SigninComponent } from './auth/signup/signin.component';
+import { SigninTalentComponent } from './auth/signup-talent/signin-talent.component';
+import { SigninClientComponent } from './auth/signup-client/signin-client.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatAutocompleteModule} from '@angular/material/autocomplete'
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,10 @@ import { SigninClientComponent } from './auth/signin-client/signin-client.compon
     FormsModule,
     ReactiveFormsModule,
     RouterLink,
-    RouterOutlet
+    RouterOutlet,
+    BrowserAnimationsModule,
+    MatAutocompleteModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
