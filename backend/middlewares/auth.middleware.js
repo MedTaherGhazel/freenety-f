@@ -10,6 +10,22 @@ module.exports = function (req, res, next) {
     req.user = decoded
     next()
   } catch (ex) {
-    res.status(400).send('JWT Error: invalid token')
+    res.status(401).send('JWT Error: invalid token')
   }
+}
+
+// accessTokens
+function generateAccessToken (user) {
+  return
+  jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '15m' })
+}
+
+// refreshTokens
+let refreshTokens = []
+function generateRefreshToken (user) {
+  const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_SECRET, {
+    expiresIn: '20m'
+  })
+  refreshTokens.push(refreshToken)
+  return refreshToken
 }
