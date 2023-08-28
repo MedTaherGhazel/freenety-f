@@ -1,5 +1,5 @@
 const { error } = require('console')
-const debug = require('debug')('node-angular')
+const debug = require('debug')('freenety')
 const app = require('./backend/app')
 const backend_config = require('./backend/config/config')
 const http = require('http')
