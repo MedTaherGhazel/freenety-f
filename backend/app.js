@@ -9,6 +9,20 @@ const app = express()
 app.use(morgan('dev'))
 app.use(express.json())
 
+// applications access middleware
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*")
+  res.setHeader(
+    "Access-Control-Allow-Header",
+    "Origin,  X-Requested-With, Content-Type, Accept"
+  )
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, PATCH, DELETE, OPTIONS"
+  )
+  next()
+})
+
 // Middleware
 app.use('/', (req, res, next) => {
   console.log('Middleware for all routes')
