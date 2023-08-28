@@ -23,7 +23,7 @@ app.use((req, res, next) => {
   next()
 })
 
-// Middleware
+// Routes Middleware
 app.use('/', (req, res, next) => {
   console.log('Middleware for all routes')
   next()
@@ -33,7 +33,8 @@ app.use('/', (req, res, next) => {
 app.get('/', (req, res) => {
   res.send('Hello, this is the root route!')
 })
-app.use(serveFavicon('/favicon.ico'))
+
+app.use(serveFavicon('./backend/favicon.ico'))
 app.use('/api', userRouter)
 
 // const port = process.env.PORT || 3000
