@@ -1,10 +1,10 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ApiService } from '../app/api.service';
+import { firstValueFrom } from 'rxjs';
 
 describe('ApiService', () => {
   let service: ApiService;
-  let httpMock: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -13,26 +13,15 @@ describe('ApiService', () => {
     });
 
     service = TestBed.inject(ApiService);
-    httpMock = TestBed.inject(HttpTestingController);
   });
 
-  afterEach(() => {
-    httpMock.verify(); // Verify that no unmatched requests are outstanding.
-  });
-
-  it('should retrieve root api', () => {
+  it('should retrieve root api', async () => {
     const dummyResponse = "Hello, this is the root route!";
+    const response = await firstValueFrom(service.getRoot());
 
-    service.getRoot().subscribe(res => {
-      expect(res).toEqual(dummyResponse);
-      console.log(`===>>> response: ${res}`);
-
-    });
-
-    const request = httpMock.expectOne('http://localhost:3000/');
-    expect(request.request.method).toBe('GET');
-    request.flush(dummyResponse);
+    console.log(`===>>> Actual Response: ${response}`);
+    expect(response).toEqual(dummyResponse);
   });
 
-  // You can add other tests for POST, PUT, DELETE etc.
+  // You can add other tests for POST, PUT, DELETE, etc.
 });

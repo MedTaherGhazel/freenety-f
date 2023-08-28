@@ -29,7 +29,7 @@ app.use((req, res, next) => {
 
 // Routes Middleware
 app.use('/', (req, res, next) => {
-  console.log('Middleware for all routes')
+  console.log('Incoming Request:', req.method, req.url);
   next()
 })
 
