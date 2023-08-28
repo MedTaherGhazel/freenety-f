@@ -1,7 +1,7 @@
-const User = require('../models').User
-
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+
+const User = require('../models').User
 const config = require('../config/config')
 
 // User register
@@ -14,11 +14,12 @@ exports.create = async data => {
 exports.authenticate = async ({ username, password }) => {
   const user = await User.findOne({ where: { username } })
   if (user && bcrypt.compareSync(password, user.password)) {
-    const token = jwt.sign({ sub: user.id }, config.development.secret, {expiresIn: config.development.expiresIn})
-    return {
-      ...user.toJSON(),
-      token
-    }
+    const token = jwt.sign(
+      { sub: user.id },
+      config.development.secret,
+      { expiresIn: config.development.expiresIn }
+    )
+    return { ...user.toJSON(), token }
   }
 }
 

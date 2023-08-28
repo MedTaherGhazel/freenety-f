@@ -19,6 +19,7 @@ describe('User CRUD', () => {
         done();
       });
   });
+
   describe('GET /api/users', () => {
     it('should return all users', done => {
       chai
@@ -34,11 +35,10 @@ describe('User CRUD', () => {
   })
 
   //TODO: Add more test cases for other CRUD operations (PUT, DELETE)
-  
   describe('GET /api/users/:id', () => {
     it('should return a user by id', done => {
       const userId = 1; // Replace with a valid user ID from your database
-  
+
       chai
         .request(app)
         .get(`/api/users/${userId}`)
@@ -47,14 +47,14 @@ describe('User CRUD', () => {
           res.should.have.status(200);
           res.body.should.be.an('object');
           // Additional assertions for the returned user data
-  
+
           done();
         });
     });
-  
+
     it('should return an error for invalid id', done => {
       const invalidId = 999; // Replace with an invalid user ID
-  
+
       chai
         .request(app)
         .get(`/api/users/${invalidId}`)
@@ -62,10 +62,12 @@ describe('User CRUD', () => {
         .end((err, res) => {
           res.should.have.status(404);
           // Additional assertions for the error response
-  
+
           done();
         });
     });
   });
+
   
+
 })
