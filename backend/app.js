@@ -3,11 +3,16 @@ const express = require('express')
 const morgan = require('morgan')
 
 const userRouter = require('./routes/user.router')
+const bodyParser = require('body-parser')
 
 const app = express()
 
 app.use(morgan('dev'))
 app.use(express.json())
+
+// body parser
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded())
 
 // applications access middleware
 app.use((req, res, next) => {
