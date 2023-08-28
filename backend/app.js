@@ -1,4 +1,5 @@
 const serveFavicon = require('serve-favicon')
+const bodyParser = require('body-parser')
 const express = require('express')
 const morgan = require('morgan')
 
@@ -8,6 +9,9 @@ const app = express()
 
 app.use(morgan('dev'))
 app.use(express.json())
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 
 // applications access middleware
 app.use((req, res, next) => {
