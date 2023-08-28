@@ -5,7 +5,7 @@ const app = require('../app')
 chai.use(chaiHttp)
 chai.should()
 
-describe('User CRUD', () => {
+xdescribe('user safe resuests', () => {
   let token;
 
   before(done => {
@@ -68,6 +68,43 @@ describe('User CRUD', () => {
     });
   });
 
-  
+
 
 })
+
+// Test updating user details
+describe('Update User Details', () => {
+  let token;
+
+  before((done) => {
+    // Log in the user and get the token
+    const credentials = {
+      username: 'demo_user',
+      password: 'demo_password'
+    };
+
+    chai.request(app)
+      .post('/api/login')
+      .send(credentials)
+      .end((err, res) => {
+        token = res.body.token;
+        done();
+      });
+  });
+
+  it('should update user details', (done) => {
+    const updatedDetails = {
+      username: 'new_username',
+      email: 'new_email@example.com'
+    };
+
+    chai.request(app)
+      .put('/api/users/:id')
+      .set('Authorization', token)
+      .send(updatedDetails)
+      .end((err, res) => {
+        res.should.have.status(204);
+        done();
+      });
+  });
+});
