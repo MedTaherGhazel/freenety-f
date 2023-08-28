@@ -37,8 +37,9 @@ app.use('/', (req, res, next) => {
 app.get('/', (req, res) => {
   res.send('Hello, this is the root route!')
 })
-
 app.use(serveFavicon('./src/favicon.ico'))
+
+// api routes
 app.use('/api', userRouter)
 
 // const port = process.env.PORT || 3000
