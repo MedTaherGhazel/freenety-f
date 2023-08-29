@@ -9,7 +9,7 @@ module.exports = {
     "database": "database_development",
     "host": "127.0.0.1",
     "dialect": "sqlite",
-    "storage": './freenety.dev.db.sqlite3'
+    "storage": './backend/freenety.dev.db.sqlite3'
   },
   "test": {
     "secret": 'Kill!Me!Now!Please',
@@ -21,7 +21,7 @@ module.exports = {
     "database": "database_test",
     "host": "127.0.0.1",
     "dialect": "sqlite",
-    "storage": './freenety.test.db.sqlite3'
+    "storage": './backend/freenety.test.db.sqlite3'
   },
   "production": {
     "secret": 'Kill!Me!Now!Please',
@@ -33,6 +33,6 @@ module.exports = {
     "database": "database_production",
     "host": "127.0.0.1",
     "dialect": "sqlite",
-    "storage": './freenety.prod.db.sqlite3'
+    "storage": './backend/freenety.prod.db.sqlite3'
   }
 }
