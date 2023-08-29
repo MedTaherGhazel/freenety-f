@@ -1,8 +1,36 @@
 const jwt = require('jsonwebtoken')
 const config = require('../config/config')
 
-// Authentication middleware
-function authenticate () {
+/**
+ * Authentication middleware
+ * @param {any} req
+ * @param {any} res
+ * @param {any} next
+ * @returns {any}
+ */
+function authenticate(req, res, next) {
+  const { username, password } = req.body;
+  User.findOne({ where: { username } })
+    .then((user) => {
+      if (user && bcrypt.compareSync(password, user.password)) {
+        req.user = user;
+        req.token = generateAccessToken(user);
+        req.refreshToken = generateRefreshToken(user);
+        next();
+      } else {
+        res.sendStatus(401);
+      }
+    })
+    .catch(next);
+}
+
+
+
+/**
+ * Authorization middleware
+ * @returns {any}
+ */
+function authorize () {
   return (req, res, next) => {
     const token = req.header('Authorization');
     if (!token) return res.status(401).send('Access denied. No token provided.');
@@ -17,7 +45,11 @@ function authenticate () {
   };
 }
 
-// accessTokens
+/**
+ * Generate access tokens
+ * @param {any} user
+ * @returns {any}
+ */
 function generateAccessToken (user) {
   return jwt.sign(
     user,
@@ -26,7 +58,11 @@ function generateAccessToken (user) {
   )
 }
 
-// refreshTokens
+/**
+ * Generate refresh tokens
+ * @param {any} user
+ * @returns {any}
+ */
 let refreshTokens = []
 function generateRefreshToken (user) {
   const refreshToken = jwt.sign(
@@ -38,4 +74,4 @@ function generateRefreshToken (user) {
   return refreshToken
 }
 
-module.exports = { authenticate, generateAccessToken, generateRefreshToken };
+module.exports = { authenticate, authorize, generateAccessToken, generateRefreshToken };

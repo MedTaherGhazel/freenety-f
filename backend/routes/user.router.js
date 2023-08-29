@@ -3,7 +3,7 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
-const { authenticate } = require('../middlewares/auth.middleware');
+const { authenticate, authorize } = require('../middlewares/auth.middleware');
 const config = require('../config/config');
 const User = require('../models').User;
 
@@ -24,26 +24,14 @@ router.post('/register', (req, res, next) => {
     .catch(next);
 });
 
-router.post('/login', (req, res, next) => {
-  const { username, password } = req.body;
-  User.findOne({ where: { username } })
-    .then(user => {
-      if (user && bcrypt.compareSync(password, user.password)) {
-        const token = jwt.sign(
-          { sub: user.id },
-          config.development.secret,
-          { expiresIn: config.development.expiresIn }
-        );
-        res.json({ ...user.toJSON(), token });
-      } else {
-        res.sendStatus(401);
-      }
-    })
-    .catch(next);
+router.post('/login', authorize, (req, res) => {
+  res.json({ ...req.user.toJSON(), token: req.token });
 });
 
 router.get('/users', (req, res, next) => {
-  User.findAll()
+  User.findAll({
+    attributes: ['username', 'email', 'createdAt']
+  })
     .then(users => {
       res.json(users);
     })

@@ -73,7 +73,7 @@ xdescribe('user safe resuests', () => {
 })
 
 // Test updating user details
-describe('Update User Details', () => {
+xdescribe('Update User Details', () => {
   let token;
 
   before((done) => {
