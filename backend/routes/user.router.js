@@ -24,8 +24,8 @@ router.post('/register', (req, res, next) => {
     .catch(next);
 });
 
-router.post('/login', authorize, (req, res) => {
-  res.json({ ...req.user.toJSON(), token: req.token });
+router.post('/login', authenticate, (req, res) => {
+  res.json({ ...req.user, token: req.token });
 });
 
 router.get('/users', (req, res, next) => {
@@ -51,7 +51,7 @@ router.get('/users/:id', (req, res, next) => {
     .catch(next);
 });
 
-router.put('/users/:id', authenticate, (req, res, next) => {
+router.put('/users/:id', authorize, (req, res, next) => {
   const { id } = req.params;
   const { username, email, password } = req.body;
   const data = {};
@@ -65,7 +65,7 @@ router.put('/users/:id', authenticate, (req, res, next) => {
     .catch(next);
 });
 
-router.delete('/users/:id', authenticate, (req, res, next) => {
+router.delete('/users/:id', authorize, (req, res, next) => {
   const { id } = req.params;
   User.destroy({ where: { id } })
     .then(() => {

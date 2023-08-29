@@ -1,5 +1,8 @@
 const jwt = require('jsonwebtoken')
+const bcrypt = require('bcrypt')
+
 const config = require('../config/config')
+const User  = require('../models').User
 
 /**
  * Authentication middleware
@@ -11,11 +14,12 @@ const config = require('../config/config')
 function authenticate(req, res, next) {
   const { username, password } = req.body;
   User.findOne({ where: { username } })
-    .then((user) => {
-      if (user && bcrypt.compareSync(password, user.password)) {
-        req.user = user;
-        req.token = generateAccessToken(user);
-        req.refreshToken = generateRefreshToken(user);
+    .then((authUser) => {
+      if (authUser && bcrypt.compareSync(password, authUser.password)) {
+        console.log(`=== >> ${authUser.toJSON()}`);
+        req.user = authUser.toJSON();
+        req.token = generateAccessToken(req.user);
+        req.refreshToken = generateRefreshToken(req.user);
         next();
       } else {
         res.sendStatus(401);
@@ -23,8 +27,6 @@ function authenticate(req, res, next) {
     })
     .catch(next);
 }
-
-
 
 /**
  * Authorization middleware
