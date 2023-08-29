@@ -43,3 +43,4 @@ Thumbs.db
 
 # Backend
 /backend/node_modules
+/.vscode
