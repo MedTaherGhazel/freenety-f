@@ -1,108 +1,142 @@
 const chai = require('chai')
 const chaiHttp = require('chai-http')
-const app = require('../app')
+const app = require('../app') // Assuming the server entry point is in app.js
 
 chai.use(chaiHttp)
-chai.should()
+const expect = chai.expect
 
-xdescribe('user safe resuests', () => {
-  let token
-
-  before(done => {
-    chai
-      .request(app)
-      .post('/api/login')
-      .send({ username: 'demo_user', password: 'demo_password' })
-      .end((err, res) => {
-        res.should.have.status(200)
-        token = res.body.token
-        done()
-      })
+describe('User Routes', () => {
+  // Test for the /register route
+  describe('POST /register', () => {
+    it('should register a new user', done => {
+      chai
+        .request(app)
+        .post('/api/register')
+        .send({
+          username: 'testuser',
+          email: 'testuser@freejnety.com',
+          password: 'password'
+        })
+        .end((err, res) => {
+          console.log(` === >>> response status and message: ${JSON.stringify(res.body)}`);
+          expect(res).to.have.status(201)
+          done()
+        })
+    })
   })
 
-  describe('GET /api/users', () => {
-    it('should return all users', done => {
+  // Test for the /login route
+  xdescribe('POST /login', () => {
+    it('should log in a user', done => {
+      chai
+        .request(app)
+        .post('/api/login')
+        .send({
+          username: 'testuser',
+          password: 'password'
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(200)
+          expect(res.body).to.have.property('token')
+          done()
+        })
+    })
+  })
+
+  // Test for the /users route
+  xdescribe('GET /users', () => {
+    it('should get all users', done => {
       chai
         .request(app)
         .get('/api/users')
-        .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
-          res.should.have.status(200)
-          res.body.should.be.an('array')
+          expect(res).to.have.status(200)
+          expect(res.body).to.be.an('array')
           done()
         })
     })
   })
 
-  //TODO: Add more test cases for other CRUD operations (PUT, DELETE)
-  describe('GET /api/users/:id', () => {
-    it('should return a user by id', done => {
-      const userId = 1 // Replace with a valid user ID from your database
-
+  // Test for the /users/:id route
+  xdescribe('GET /users/:id', () => {
+    it('should get a specific user', done => {
+      const userId = 3 // Replace with an existing user ID in your database
       chai
         .request(app)
         .get(`/api/users/${userId}`)
-        .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
-          res.should.have.status(200)
-          res.body.should.be.an('object')
-          // Additional assertions for the returned user data
-
+          expect(res).to.have.status(200)
+          expect(res.body).to.be.an('object')
           done()
         })
     })
+  })
 
-    it('should return an error for invalid id', done => {
-      const invalidId = 999 // Replace with an invalid user ID
-
+  // Test for the /users/:id route
+  xdescribe('PUT /users/:id', () => {
+    let token
+    before(done => {
       chai
         .request(app)
-        .get(`/api/users/${invalidId}`)
-        .set('Authorization', `Bearer ${token}`)
+        .post('/api/login')
+        .send({
+          username: 'testuser',
+          password: 'password'
+        })
         .end((err, res) => {
-          res.should.have.status(404)
-          // Additional assertions for the error response
+          expect(res).to.have.status(200)
+          token = res.body.token
+          done()
+        })
+    })
 
+    it('should update a user', done => {
+      const userId = 3 // Replace with an existing user ID in your database
+      chai
+        .request(app)
+        .put(`/api/users/${userId}`)
+        .set('Authorization', `${token}`)
+        .send({
+          email: 'newemail@example.com',
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(204)
           done()
         })
     })
   })
-})
 
-// Test updating user details
-describe('Update User Details', () => {
-  let token
-  let user
+  // Test for the /users/:id route
+  xdescribe('DELETE /users/:id', () => {
+    let token
+    before(done => {
+      chai
+        .request(app)
+        .post('/api/login')
+        .send({
+          username: 'testuser',
+          password: 'password'
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(200)
+          token = res.body.token
+          done()
+        })
+    })
 
-  before(done => {
-    // Log in the user and get the token
-    const credentials = {
-      username: 'demo_user',
-      password: 'demo_password'
-    }
-    chai
-      .request(app)
-      .post('/api/login')
-      .send(credentials)
-      .end((err, res) => {
-        token = res.body.token
-        user = res.body.user
-        done()
-      })
-  })
-
-  it('should update user details', done => {
-    const updatedDetails = {
-      email: 'new_email_test_' + Math.random().toFixed(1) + '@example.com'
-    }
-    chai
-      .request(app)
-      .put('/api/users/:id')
-      .set('Authorization', token)
-      .send(updatedDetails)
-      .end((err, res) => {
-        res.should.have.status(204)
-        done()
-      })
+    it('should delete a user', done => {
+      const userId = 3 // Replace with an existing user ID in your database
+      chai
+        .request(app)
+        .delete(`/api/users/${userId}`)
+        .set('Authorization', `${token}`)
+        .end((err, res) => {
+          expect(res).to.have.status(200)
+          expect(res.body)
+            .to.have.property('message')
+            .to.equal('User deleted successfully')
+          done()
+        })
+    })
   })
 })

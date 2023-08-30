@@ -13,6 +13,7 @@ app.use(express.json())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
+
 // applications access middleware
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*")

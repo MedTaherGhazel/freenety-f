@@ -20,9 +20,16 @@ router.post('/register', (req, res, next) => {
       })
     })
     .then(() => {
-      res.json({ message: 'Registration successful' })
+      res.status(201).send('Registration successful.');
     })
-    .catch(next)
+    .catch(err => {
+      if (err.name === 'SequelizeUniqueConstraintError') {
+        const message = err.errors[0].path == 'username' ? 'Username already exists.' : 'Email already exists.'
+        res.status(406).send(message);
+      } else {
+        next(err);
+      }
+    })
 })
 
 router.post('/login', authenticate, (req, res) => {
@@ -46,13 +53,15 @@ router.get('/users/:id', (req, res, next) => {
       if (user) {
         res.json(user)
       } else {
-        res.sendStatus(404)
+        res.status(404).send('User Not Found.');
       }
     })
     .catch(next)
 })
 
 router.put('/users/:id', authorize, (req, res, next) => {
+  console.log(` === >>> user authorized ${JSON.stringify(req.user)}`);
+
   const { id } = req.params
   const { username, email, password } = req.body
   const data = {}
@@ -67,11 +76,17 @@ router.put('/users/:id', authorize, (req, res, next) => {
       User.findByPk(userId)
         .then(user => user.save())
         .then(() => {
-          res.sendStatus(204)
+          res.status(204).send('User Update Successfully.');
         })
         .catch(next)
     })
-    .catch(next)
+    .catch(err => {
+      if (err.name === 'NotFoundError') {
+        res.status(404).send('User not found.');
+      } else {
+        next(err);
+      }
+    })
 })
 
 router.delete('/users/:id', authorize, (req, res, next) => {
