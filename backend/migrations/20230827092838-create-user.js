@@ -27,6 +27,30 @@ module.exports = {
       },
       updatedAt: {
         type: Sequelize.DATE
+      },
+      first_name: {
+        type: DataTypes.STRING,
+        allowNull: true
+      },
+      last_name: {
+        type: DataTypes.STRING,
+        allowNull: true
+      },
+      phone_number: {
+        type: DataTypes.STRING,
+        allowNull: true
+      },
+      gender: {
+        type: DataTypes.STRING,
+        allowNull: true
+      },
+      birthdate: {
+        type: DataTypes.DATE,
+        allowNull: true
+      },
+      role: {
+        type: DataTypes.STRING,
+        allowNull: true
       }
     });
   },
