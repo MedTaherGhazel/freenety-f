@@ -1,13 +1,13 @@
 const { Model, DataTypes } = require('sequelize')
 
 module.exports = (sequelize, DataTypes) => {
-  class StaffProfile extends Model {
+  class Staff extends Model {
     static associate (models) {
       this.belongsTo(models.User, { foreignKey: 'user_id' })
     }
   }
 
-  StaffProfile.init(
+  Staff.init(
     {
       position: {
         type: DataTypes.STRING,
@@ -31,8 +31,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: 'StaffProfile'
+      modelName: 'Staff'
     }
   )
-  return StaffProfile
+  return Staff
 }
