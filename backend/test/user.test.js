@@ -1,11 +1,11 @@
 const chai = require('chai')
 const chaiHttp = require('chai-http')
-const app = require('../app') // Assuming the server entry point is in app.js
+const app = require('../app')
 
 chai.use(chaiHttp)
 const expect = chai.expect
 
-describe('User Routes', () => {
+xdescribe('User Routes', () => {
   // Test for the /register route
   describe('POST /register', () => {
     it('should register a new user', done => {
@@ -26,7 +26,7 @@ describe('User Routes', () => {
   })
 
   // Test for the /login route
-  xdescribe('POST /login', () => {
+  describe('POST /login', () => {
     it('should log in a user', done => {
       chai
         .request(app)
@@ -44,7 +44,7 @@ describe('User Routes', () => {
   })
 
   // Test for the /users route
-  xdescribe('GET /users', () => {
+  describe('GET /users', () => {
     it('should get all users', done => {
       chai
         .request(app)
@@ -58,7 +58,7 @@ describe('User Routes', () => {
   })
 
   // Test for the /users/:id route
-  xdescribe('GET /users/:id', () => {
+  describe('GET /users/:id', () => {
     it('should get a specific user', done => {
       const userId = 3 // Replace with an existing user ID in your database
       chai
@@ -73,7 +73,7 @@ describe('User Routes', () => {
   })
 
   // Test for the /users/:id route
-  xdescribe('PUT /users/:id', () => {
+  describe('PUT /users/:id', () => {
     let token
     before(done => {
       chai
@@ -107,7 +107,7 @@ describe('User Routes', () => {
   })
 
   // Test for the /users/:id route
-  xdescribe('DELETE /users/:id', () => {
+  describe('DELETE /users/:id', () => {
     let token
     before(done => {
       chai

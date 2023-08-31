@@ -14,15 +14,16 @@ module.exports = {
       },
       position: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
       },
       departement: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
       },
       isActive: {
         type: Sequelize.BOOLEAN,
-        allowNull: false
+        allowNull: false,
+        defaultValue: false
       },
       user_id: {
         type: Sequelize.INTEGER,

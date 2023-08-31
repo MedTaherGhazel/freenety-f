@@ -4,6 +4,7 @@ const express = require('express')
 const morgan = require('morgan')
 
 const userRouter = require('./routes/user.router')
+const staffRouter = require('./routes/staff.router')
 
 const app = express()
 
@@ -42,5 +43,6 @@ app.use(serveFavicon('./src/favicon.ico'))
 
 // api routes
 app.use('/api', userRouter)
+app.use('/api', staffRouter)
 
 module.exports = app

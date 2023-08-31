@@ -52,7 +52,7 @@ module.exports = {
       role: {
         type: DataTypes.JSON(),
         allowNull: false,
-        defaultValue: '{"roles": ["BASIC"]}'
+        defaultValue: "{'roles': ['BASIC']}"
       }
     });
   },
