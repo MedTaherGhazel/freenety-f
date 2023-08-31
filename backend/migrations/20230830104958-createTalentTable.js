@@ -22,7 +22,7 @@ module.exports = {
         allowNull: true
       },
       languages: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.JSON(),
         allowNull: true
       },
       talent_data_id: {

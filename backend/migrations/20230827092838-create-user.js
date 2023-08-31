@@ -50,9 +50,9 @@ module.exports = {
         allowNull: true
       },
       role: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.JSON(),
         allowNull: false,
-        defaultValue: ['BASIC']
+        defaultValue: '{"roles": ["BASIC"]}'
       }
     });
   },

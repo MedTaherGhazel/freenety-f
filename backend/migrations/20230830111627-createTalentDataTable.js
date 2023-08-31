@@ -11,19 +11,19 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       diplomas: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.JSON(),
         allowNull: true
       },
       work_experiences: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.JSON(),
         allowNull: true
       },
       internships: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.JSON(),
         allowNull: true
       },
       skills: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.JSON(),
         allowNull: true
       }
     });
