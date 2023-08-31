@@ -9,14 +9,15 @@ const User = require('../models').User
 
 // User routes
 router.post('/register', (req, res, next) => {
-  const { username, email, password } = req.body
+  const { username, email, password, role } = req.body
   bcrypt
     .hash(password, 10)
     .then(hash => {
       return User.create({
         username,
         email,
-        password: hash
+        password: hash,
+        role
       })
     })
     .then(() => {
