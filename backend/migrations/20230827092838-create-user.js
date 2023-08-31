@@ -1,4 +1,5 @@
 const { DataTypes } = require('sequelize');
+
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Users', {
@@ -49,8 +50,9 @@ module.exports = {
         allowNull: true
       },
       role: {
-        type: DataTypes.STRING,
-        allowNull: true
+        type: DataTypes.ARRAY(DataTypes.STRING),
+        allowNull: false,
+        defaultValue: ['BASIC']
       }
     });
   },
