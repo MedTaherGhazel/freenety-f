@@ -1,17 +1,18 @@
 const { Model, DataTypes } = require('sequelize')
 
 module.exports = (sequelize, DataTypes) => {
-  class Staff extends Model {
+  class Talent extends Model {
     static associate (models) {
       this.belongsTo(models.User, { foreignKey: 'user_id' })
     }
   }
 
-  Staff.init(
+  Talent.init(
     {
-      position: DataTypes.STRING,
-      departement: DataTypes.STRING,
+      portfolio:DataTypes.STRING,
+      talent_data: DataTypes.JSON(),
       isActive: DataTypes.BOOLEAN,
+      membership_type: DataTypes.STRING,
 
       user_id: {
         type: DataTypes.INTEGER,
@@ -23,8 +24,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: 'Staff'
+      modelName: 'Talent'
     }
   )
-  return Staff
+  return Talent
 }

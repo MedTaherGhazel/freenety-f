@@ -9,28 +9,24 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      portfolio: {
-        type: DataTypes.STRING,
-        allowNull: true
-      },
-      social_media: {
-        type: DataTypes.STRING,
-        allowNull: true
-      },
-      linkedin: {
-        type: DataTypes.STRING,
-        allowNull: true
-      },
-      languages: {
+      talent_data: {
         type: DataTypes.JSON(),
-        allowNull: true
-      },
-      talent_data_id: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: 'talent_data',
-          key: 'id'
+        defaultValue: {
+          "links": [null],
+          "languages": [null],
+          "diplomas": [null],
+          "jobs": [null],
+          "internships": [null],
+          "skills": [null]
         }
+      },
+      membership_type: {
+        type: DataTypes.STRING,
+        defaultValue: 'BASIC'
+      },
+      isActive: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true
       },
       user_id: {
         type: DataTypes.INTEGER,

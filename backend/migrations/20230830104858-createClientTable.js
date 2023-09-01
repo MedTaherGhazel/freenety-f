@@ -17,17 +17,11 @@ module.exports = {
         type: DataTypes.STRING,
         allowNull: true
       },
-      company_website: {
-        type: DataTypes.STRING,
-        allowNull: true
-      },
-      linkedin: {
-        type: DataTypes.STRING,
-        allowNull: true
-      },
-      social_media: {
-        type: DataTypes.STRING,
-        allowNull: true
+      client_data: {
+        type: DataTypes.JSON(),
+        defaultValue: {
+          "links": [null]
+        }
       },
       membership_type: {
         type: DataTypes.STRING,
