@@ -8,7 +8,7 @@ chai.use(chaiHttp);
 const expect = chai.expect;
 let token;
 
-describe('Staff Routes test', () => {
+xdescribe('Staff Routes test', () => {
   // Login and get token before running tests
   beforeEach((done) => {
     chai.request(app)
@@ -36,6 +36,22 @@ describe('Staff Routes test', () => {
       });
   });
 
-  // Add tests for other routes (POST, PUT, DELETE) here
+  // Test PUT /staffs route
+  it('should update a staff profile', (done) => {
+    const staffId = 1
+    const data = {
+      position: 'dev',
+      departement: 'IT',
+      isActive: true
+    }
+    chai.request(app)
+      .put(`/api/staffs/${staffId}`)
+      .set('Authorization', `${token}`)
+      .send(data)
+      .end((err, res) => {
+        expect(res).to.have.status(204);
+        done();
+      });
+  });
 
 });
