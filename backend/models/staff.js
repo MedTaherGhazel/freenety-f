@@ -10,16 +10,13 @@ module.exports = (sequelize, DataTypes) => {
   Staff.init(
     {
       position: {
-        type: DataTypes.STRING,
-        allowNull: false
+        type: DataTypes.STRING
       },
       departement: {
-        type: DataTypes.STRING,
-        allowNull: false
+        type: DataTypes.STRING
       },
       isActive: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false
+        type: DataTypes.BOOLEAN
       },
       user_id: {
         type: DataTypes.INTEGER,
