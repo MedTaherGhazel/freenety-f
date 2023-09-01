@@ -36,13 +36,8 @@ router.get('/staffs/:id', authorize, (req, res, next) => {
 
 // Create a new staff profile
 router.post('/staffs', authorize, (req, res, next) => {
-  const { position, departement, isActive, user_id } = req.body
-  staff.create({
-    position,
-    departement,
-    isActive,
-    user_id
-  })
+  const { user_id } = req.body
+  staff.create({ user_id })
     .then(() => {
       res.status(201).send('staff Profile Created Successfully.')
     })

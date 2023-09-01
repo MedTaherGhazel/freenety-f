@@ -44,5 +44,7 @@ app.use(serveFavicon('./src/favicon.ico'))
 // api routes
 app.use('/api', userRouter)
 app.use('/api', staffRouter)
+app.use('/api', clientRouter)
+app.use('/api', talentRouter)
 
 module.exports = app
