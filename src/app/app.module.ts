@@ -13,6 +13,8 @@ import { SigninClientComponent } from './auth/signup-client/signin-client.compon
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatAutocompleteModule} from '@angular/material/autocomplete'
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { NavbarComponent } from './navbar/navbar.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     LoginComponent,
     SigninComponent,
     SigninTalentComponent,
-    SigninClientComponent
+    SigninClientComponent,
+    NavbarComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

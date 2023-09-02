@@ -12,7 +12,6 @@ export class SigninClientComponent {
   constructor(public authService:AuthService) {}
   onSignup(form:NgForm){
     if(form.invalid){
-      console.log
       return;
     }
     this.authService.createUser(form.value.email,form.value.password);

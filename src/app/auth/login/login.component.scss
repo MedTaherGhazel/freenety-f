@@ -4,7 +4,7 @@ $prism-length: 250px;
 $prism-depth: $prism-length;
 $spacing: 20px;
 $br: 3px;
-
+$font:Tahoma, Verdana, Segoe, sans-serif;
 // Colors
 $text-light: #fff;
 $text-dark: #666;
@@ -20,6 +20,24 @@ margin-right: auto;
 margin-top: 5%;
 width: 100px;
 }
+
+button {
+  width: 200px;
+  margin-left: 2%;
+  background: transparent;
+  line-height: 3em;
+  border: 1px solid $green;
+  background-color: $green;
+  border-radius: $spacing;
+  font-family: $font;
+  cursor: pointer;
+  color: white;
+  &:hover {
+    box-shadow: 5px 5px 20px $green;
+  }
+
+}
+
 h1{
   font-family: Tahoma,Verdana,Segoe,sans-serif;
   color: $green;
