@@ -7,17 +7,17 @@ chai.use(chaiHttp)
 const expect = chai.expect
 let token
 
-// create new staff user
-xdescribe('POST /register', () => {
-  it('should register a new staff user', done => {
+// create new client user
+describe('POST /register', () => {
+  it('should register a new client user', done => {
     chai
       .request(app)
       .post('/api/register')
       .send({
-        username: 'teststaff',
-        email: 'teststaff@freejnety.com',
-        password: 'passwordstaff',
-        role: { roles: ['BASIC', 'STAFF'] }
+        username: 'testclient',
+        email: 'testclient@freejnety.com',
+        password: 'passwordclient',
+        role: { roles: ['BASIC', 'CLIENT'] }
       })
       .end((err, res) => {
         expect(res).to.have.status(201)
@@ -26,15 +26,15 @@ xdescribe('POST /register', () => {
   })
 })
 
-xdescribe('Staff Routes test', () => {
+xdescribe('Client Routes test', () => {
   // Login and get token before running tests
   beforeEach(done => {
     chai
       .request(app)
       .post('/api/login')
       .send({
-        username: 'teststaff',
-        password: 'passwordstaff'
+        username: 'testclient',
+        password: 'passwordclient'
       })
       .end((err, res) => {
         expect(res).to.have.status(200)
@@ -43,11 +43,11 @@ xdescribe('Staff Routes test', () => {
       })
   })
 
-  // Test GET /staffs route
-  it('should GET all staff profiles', done => {
+  // Test GET /clients route
+  it('should GET all client profiles', done => {
     chai
       .request(app)
-      .get('/api/staffs')
+      .get('/api/clients')
       .set('Authorization', `${token}`)
       .end((err, res) => {
         expect(res).to.have.status(200)
@@ -56,17 +56,16 @@ xdescribe('Staff Routes test', () => {
       })
   })
 
-  // Test PUT /staffs route
-  it('should update a staff profile', done => {
-    const staffId = 1
+  // Test PUT /clients route
+  it('should update a client profile', done => {
+    const clientId = getClientIdFromUserId(req.user.id)
     const data = {
-      position: 'dev',
-      departement: 'IT',
-      isActive: true
+      company_name: 'ESPRIT',
+      membership_type: 'PREMIUM'
     }
     chai
       .request(app)
-      .put(`/api/staffs/${staffId}`)
+      .put(`/api/clients/${clientId}`)
       .set('Authorization', `${token}`)
       .send(data)
       .end((err, res) => {
@@ -75,3 +74,16 @@ xdescribe('Staff Routes test', () => {
       })
   })
 })
+
+async function getClientIdFromUserId (userId) {
+  // Get the client from the Clients table where user_id = userId
+  const client = await sequelize.query(
+    'SELECT id FROM clients WHERE user_id = ?',
+    {
+      replacements: [userId]
+    }
+  )
+
+  // Return the client ID
+  return client[0].id
+}

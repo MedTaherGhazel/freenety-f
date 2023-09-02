@@ -7,12 +7,14 @@ const router = express.Router()
 const { authenticate, authorize } = require('../middlewares/auth.middleware')
 const config = require('../config/config')
 const User = require('../models').User
-
-axios.defaults.baseURL = `http://${config.development.host}:${config.development.port}`
+const staff = require('../models').Staff
+const client = require('../models').Client
+const talent = require('../models').Talent
 
 // User routes
 router.post('/register', (req, res, next) => {
   const { username, email, password, role } = req.body
+
   bcrypt
     .hash(password, 10)
     .then(hash => {
@@ -26,62 +28,60 @@ router.post('/register', (req, res, next) => {
     })
     .then(user => {
       console.log(' === >>> logging in.')
-      axios
-        .post('/api/login', {
-          username: user.username,
-          password: req.body.password
-        })
-        .then(response => {
-          const token = response.data.token
-          const parsedRole = user.role.roles[1]
-          let profileCreationRoute
-          console.log(' === >>> login successful, parsing role.')
 
-          switch (parsedRole) {
-            case 'STAFF':
-              profileCreationRoute = '/api/staffs'
-              console.log(' === >>> STAFF detected. sending request.')
-              break
-            case 'CLIENT':
-              profileCreationRoute = '/api/clients'
-              console.log(' === >>> CLIENT detected. sending request.')
-              break
-            case 'TALENT':
-              profileCreationRoute = '/api/talents'
-              console.log(' === >>> TALENT detected. sending request.')
-              break
-            default:
-              return res.status(400).send('Invalid role.')
-          }
+      // Call the authenticate middleware directly
+      authenticate(req, res, () => {
+        const token = req.token
+        const parsedRole = user.role.roles[1]
+        req.headers = { Authorization: `${token}` }
 
-          axios
-            .post(
-              profileCreationRoute,
-              {
-                user_id: user.id
-              },
-              {
-                headers: {
-                  Authorization: `${token}`
-                }
-              }
-            )
-            .then(() => {
-              res
-                .status(201)
-                .send('Registration and profile creation successful.')
+        console.log(' === >>> login successful, parsing role.')
+        switch (parsedRole) {
+          case 'STAFF':
+            console.log(' === >>> STAFF detected. sending request.')
+            staff
+              .create({ user_id: user.id })
+              .then(() => {
+                res.status(201).send('Staff Profile Created Successfully.')
             })
-            .catch(next)
-        })
-        .catch(next)
+            break
+          case 'CLIENT':
+            console.log(' === >>> CLIENT detected. sending request.')
+            client
+              .create({ user_id: user.id })
+              .then(() => {
+                res.status(201).send('Client Profile Created Successfully.')
+              })
+              .catch(next)
+            break
+          case 'TALENT':
+            console.log(' === >>> TALENT detected. sending request.')
+            talent
+              .create({ user_id: user.id })
+              .then(() => {
+                res.status(201).send('Talent Profile Created Successfully.')
+              })
+              .catch(next)
+            break
+          default:
+            return res.status(400).send('Invalid role.')
+        }
+      })
     })
     .catch(err => {
-      if (err.name === 'SequelizeUniqueConstraintError') {
+      console.error(' == ++++ >>> ', err);
+      if (err instanceof Sequelize.UniqueConstraintError) {
         const message =
           err.errors[0].path == 'username'
             ? 'Username already exists.'
             : 'Email already exists.'
         res.status(406).send(message)
+      } else if (err instanceof Sequelize.DatabaseError) {
+        console.error('Database error');
+        res.status(500).send('Database error')
+      } else if (err instanceof Sequelize.ConnectionError) {
+        console.error('Database connection error');
+        res.status(500).send('Database connection error')
       } else {
         next(err)
       }

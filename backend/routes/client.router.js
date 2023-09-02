@@ -23,7 +23,7 @@ router.get('/clients', authorize, (req, res, next) => {
 // Get a single client profile
 router.get('/clients/:id', authorize, (req, res, next) => {
   const { id } = req.params
-  client.findByPk(id)
+  client.findByUserId(id)
     .then(client => {
       if (client) {
         res.json(client)
@@ -54,7 +54,7 @@ router.put('/clients/:id', authorize, (req, res, next) => {
   if (client_data) data.client_data = client_data
   if (membership_type) data.membership_type = membership_type
 
-  client.update(data, { where: { id } })
+  client.update(data, { where: { user_id: id } })
     .then(() => {
       res.status(204).send('client Profile Updated Successfully.')
     })
@@ -64,7 +64,7 @@ router.put('/clients/:id', authorize, (req, res, next) => {
 // Delete a client profile
 router.delete('/clients/:id', authorize, (req, res, next) => {
   const { id } = req.params
-  client.destroy({ where: { id } })
+  client.destroy({ where: { user_id: id } })
     .then(() => {
       res.json({ message: 'client Profile Deleted Successfully.' })
     })

@@ -54,7 +54,7 @@ router.put('/talents/:id', authorize, (req, res, next) => {
   if (membership_type) data.membership_type = membership_type
   if (typeof isActive !== 'undefined') data.isActive = isActive
 
-  talent.update(data, { where: { id } })
+  talent.update(data, { where: { user_id: id } })
     .then(() => {
       res.status(204).send('talent Profile Updated Successfully.')
     })
@@ -64,7 +64,7 @@ router.put('/talents/:id', authorize, (req, res, next) => {
 // Delete a talent profile
 router.delete('/talents/:id', authorize, (req, res, next) => {
   const { id } = req.params
-  talent.destroy({ where: { id } })
+  talent.destroy({ where: { user_id: id } })
     .then(() => {
       res.json({ message: 'talent Profile Deleted Successfully.' })
     })

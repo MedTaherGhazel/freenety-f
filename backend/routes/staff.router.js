@@ -53,7 +53,7 @@ router.put('/staffs/:id', authorize, (req, res, next) => {
   if (departement) data.departement = departement
   if (typeof isActive !== 'undefined') data.isActive = isActive
 
-  staff.update(data, { where: { id } })
+  staff.update(data, { where: { user_id: id } })
     .then(() => {
       res.status(204).send('staff Profile Updated Successfully.')
     })
@@ -63,7 +63,7 @@ router.put('/staffs/:id', authorize, (req, res, next) => {
 // Delete a staff profile
 router.delete('/staffs/:id', authorize, (req, res, next) => {
   const { id } = req.params
-  staff.destroy({ where: { id } })
+  staff.destroy({ where: { user_id: id } })
     .then(() => {
       res.json({ message: 'staff Profile Deleted Successfully.' })
     })

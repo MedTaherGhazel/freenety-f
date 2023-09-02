@@ -6,25 +6,6 @@ chai.use(chaiHttp)
 const expect = chai.expect
 
 xdescribe('User Routes', () => {
-  // Test for the /register route
-  describe('POST /register', () => {
-    it('should register a new user', done => {
-      chai
-        .request(app)
-        .post('/api/register')
-        .send({
-          username: 'testuser',
-          email: 'testuser@freejnety.com',
-          password: 'password'
-        })
-        .end((err, res) => {
-          console.log(` === >>> response status and message: ${JSON.stringify(res.body)}`);
-          expect(res).to.have.status(201)
-          done()
-        })
-    })
-  })
-
   // Test for the /login route
   describe('POST /login', () => {
     it('should log in a user', done => {
