@@ -8,7 +8,7 @@ const expect = chai.expect
 let token
 
 // create new staff user
-xdescribe('POST /register', () => {
+describe('POST /register', () => {
   it('should register a new staff user', done => {
     chai
       .request(app)
@@ -26,8 +26,10 @@ xdescribe('POST /register', () => {
   })
 })
 
-xdescribe('Staff Routes test', () => {
+describe('Staff Routes test', () => {
   // Login and get token before running tests
+  let userId;
+
   beforeEach(done => {
     chai
       .request(app)
@@ -37,11 +39,12 @@ xdescribe('Staff Routes test', () => {
         password: 'passwordstaff'
       })
       .end((err, res) => {
-        expect(res).to.have.status(200)
-        token = res.body.token
-        done()
-      })
-  })
+        expect(res).to.have.status(200);
+        token = res.body.token;
+        userId = res.body.id; // save user ID
+        done();
+      });
+  });
 
   // Test GET /staffs route
   it('should GET all staff profiles', done => {
@@ -58,7 +61,6 @@ xdescribe('Staff Routes test', () => {
 
   // Test PUT /staffs route
   it('should update a staff profile', done => {
-    const staffId = 1
     const data = {
       position: 'dev',
       departement: 'IT',
@@ -66,12 +68,13 @@ xdescribe('Staff Routes test', () => {
     }
     chai
       .request(app)
-      .put(`/api/staffs/${staffId}`)
+      .put(`/api/staffs/${userId}`)
       .set('Authorization', `${token}`)
       .send(data)
       .end((err, res) => {
-        expect(res).to.have.status(204)
-        done()
-      })
-  })
+        expect(res).to.have.status(204);
+        done();
+      });
+  });
+
 })

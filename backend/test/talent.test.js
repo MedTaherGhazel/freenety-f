@@ -1,15 +1,14 @@
+const chai = require('chai')
+const chaiHttp = require('chai-http')
+const app = require('../app')
+const { beforeEach } = require('mocha')
 
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const app = require('../app');
-const { beforeEach } = require('mocha');
-
-chai.use(chaiHttp);
-const expect = chai.expect;
-let token;
+chai.use(chaiHttp)
+const expect = chai.expect
+let token
 
 // create new talent user
-xdescribe('POST /register', () => {
+describe('POST /register', () => {
   it('should register a new talent user', done => {
     chai
       .request(app)
@@ -27,10 +26,13 @@ xdescribe('POST /register', () => {
   })
 })
 
-xdescribe('Talent Routes test', () => {
+describe('Talent Routes test', () => {
   // Login and get token before running tests
-  beforeEach((done) => {
-    chai.request(app)
+  let userId;
+
+  beforeEach(done => {
+    chai
+      .request(app)
       .post('/api/login')
       .send({
         username: 'testtalent',
@@ -39,37 +41,39 @@ xdescribe('Talent Routes test', () => {
       .end((err, res) => {
         expect(res).to.have.status(200);
         token = res.body.token;
+        userId = res.body.id; // save user ID
         done();
       });
   });
 
   // Test GET /talents route
-  it('should GET all talent profiles', (done) => {
-    chai.request(app)
+  it('should GET all talent profiles', done => {
+    chai
+      .request(app)
       .get('/api/talents')
       .set('Authorization', `${token}`)
       .end((err, res) => {
-        expect(res).to.have.status(200);
-        expect(res.body).to.be.a('array');
-        done();
-      });
-  });
+        expect(res).to.have.status(200)
+        expect(res.body).to.be.a('array')
+        done()
+      })
+  })
 
   // Test PUT /talents route
-  it('should update a talent profile', (done) => {
-    const talentId = 1
+  it('should update a talent profile', done => {
     const data = {
-      portfolio: 'some portfolio url',
+      company_name: 'ESPRIT',
       membership_type: 'PREMIUM'
     }
-    chai.request(app)
-      .put(`/api/talents/${talentId}`)
+    chai
+      .request(app)
+      .put(`/api/talents/${userId}`)
       .set('Authorization', `${token}`)
       .send(data)
       .end((err, res) => {
-        expect(res).to.have.status(204);
-        done();
-      });
-  });
-
-});
+        console.log(' === >>> error updating post excution: ', err);
+        expect(res).to.have.status(204)
+        done()
+      })
+  })
+})

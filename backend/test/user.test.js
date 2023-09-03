@@ -13,8 +13,8 @@ xdescribe('User Routes', () => {
         .request(app)
         .post('/api/login')
         .send({
-          username: 'testuser',
-          password: 'password'
+          username: 'teststaff',
+          password: 'passwordstaff'
         })
         .end((err, res) => {
           expect(res).to.have.status(200)
@@ -62,7 +62,7 @@ xdescribe('User Routes', () => {
         .post('/api/login')
         .send({
           username: 'testuser',
-          password: 'password'
+          password: 'passwordstaff'
         })
         .end((err, res) => {
           expect(res).to.have.status(200)

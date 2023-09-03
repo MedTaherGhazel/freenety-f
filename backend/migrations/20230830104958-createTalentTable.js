@@ -1,5 +1,4 @@
-const { DataTypes } = require('sequelize');
-
+/** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Talents', {
@@ -10,35 +9,41 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       talent_data: {
-        type: DataTypes.JSON(),
+        type: Sequelize.JSON(),
         defaultValue: {
-          "links": [null],
-          "languages": [null],
-          "diplomas": [null],
-          "jobs": [null],
-          "internships": [null],
-          "skills": [null]
+          links: [null],
+          languages: [null],
+          diplomas: [null],
+          jobs: [null],
+          internships: [null],
+          skills: [null]
         }
       },
       membership_type: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         defaultValue: 'BASIC'
       },
       isActive: {
-        type: DataTypes.BOOLEAN,
+        type: Sequelize.BOOLEAN,
         defaultValue: true
       },
+      createdAt: {
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        type: Sequelize.DATE
+      },
       user_id: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         references: {
           model: 'users',
           key: 'id'
         }
       }
-    });
+    })
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Talents');
+    await queryInterface.dropTable('Talents')
   }
-};
+}

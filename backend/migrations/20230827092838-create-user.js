@@ -1,7 +1,6 @@
-const { DataTypes } = require('sequelize');
-
+/** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up (queryInterface, Sequelize) {
     await queryInterface.createTable('Users', {
       id: {
         allowNull: false,
@@ -21,42 +20,42 @@ module.exports = {
       },
       password: {
         type: Sequelize.STRING,
+        allowNull: false
+      },
+      first_name: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      last_name: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      phone_number: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      gender: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      birthdate: {
+        type: Sequelize.DATE,
+        allowNull: true
+      },
+      role: {
+        type: Sequelize.JSON(),
         allowNull: false,
+        defaultValue: { roles: ['BASIC'] }
       },
       createdAt: {
         type: Sequelize.DATE
       },
       updatedAt: {
         type: Sequelize.DATE
-      },
-      first_name: {
-        type: DataTypes.STRING,
-        allowNull: true
-      },
-      last_name: {
-        type: DataTypes.STRING,
-        allowNull: true
-      },
-      phone_number: {
-        type: DataTypes.STRING,
-        allowNull: true
-      },
-      gender: {
-        type: DataTypes.STRING,
-        allowNull: true
-      },
-      birthdate: {
-        type: DataTypes.DATE,
-        allowNull: true
-      },
-      role: {
-        type: DataTypes.JSON(),
-        allowNull: false,
-        defaultValue: {roles: ['BASIC']}
       }
-    });
+    })
   },
-  async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Users');
+  async down (queryInterface, Sequelize) {
+    await queryInterface.dropTable('Users')
   }
-};
+}

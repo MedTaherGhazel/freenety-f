@@ -9,8 +9,8 @@ module.exports = (sequelize, DataTypes) => {
 
   Client.init(
     {
-      company_name:DataTypes.STRING,
-      company_addr:DataTypes.STRING,
+      company_name: DataTypes.STRING,
+      company_addr: DataTypes.STRING,
       client_data: DataTypes.JSON(),
       membership_type: DataTypes.STRING,
 

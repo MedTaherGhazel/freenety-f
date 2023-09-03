@@ -9,7 +9,6 @@ module.exports = (sequelize, DataTypes) => {
 
   Talent.init(
     {
-      portfolio:DataTypes.STRING,
       talent_data: DataTypes.JSON(),
       isActive: DataTypes.BOOLEAN,
       membership_type: DataTypes.STRING,

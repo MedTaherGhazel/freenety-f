@@ -1,10 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const jwt = require('jsonwebtoken')
-const bcrypt = require('bcrypt')
 
 const { authorize } = require('../middlewares/auth.middleware')
-const config = require('../config/config')
 const client = require('../models').Client
 
 
@@ -47,12 +44,13 @@ router.post('/clients', authorize, (req, res, next) => {
 // Update a client profile
 router.put('/clients/:id', authorize, (req, res, next) => {
   const { id } = req.params
-  const { company_name, client_data, membership_type, isActive } = req.body
+  const { company_name, company_addr, client_data, membership_type, isActive } = req.body
   const data = {}
   if (company_name) data.company_name = company_name
   if (company_addr) data.company_addr = company_addr
   if (client_data) data.client_data = client_data
   if (membership_type) data.membership_type = membership_type
+  if (membership_type) data.isActive = isActive
 
   client.update(data, { where: { user_id: id } })
     .then(() => {

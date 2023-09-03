@@ -26,8 +26,10 @@ describe('POST /register', () => {
   })
 })
 
-xdescribe('Client Routes test', () => {
+describe('Client Routes test', () => {
   // Login and get token before running tests
+  let userId;
+
   beforeEach(done => {
     chai
       .request(app)
@@ -37,11 +39,12 @@ xdescribe('Client Routes test', () => {
         password: 'passwordclient'
       })
       .end((err, res) => {
-        expect(res).to.have.status(200)
-        token = res.body.token
-        done()
-      })
-  })
+        expect(res).to.have.status(200);
+        token = res.body.token;
+        userId = res.body.id; // save user ID
+        done();
+      });
+  });
 
   // Test GET /clients route
   it('should GET all client profiles', done => {
@@ -58,32 +61,19 @@ xdescribe('Client Routes test', () => {
 
   // Test PUT /clients route
   it('should update a client profile', done => {
-    const clientId = getClientIdFromUserId(req.user.id)
     const data = {
       company_name: 'ESPRIT',
       membership_type: 'PREMIUM'
     }
     chai
       .request(app)
-      .put(`/api/clients/${clientId}`)
+      .put(`/api/clients/${userId}`)
       .set('Authorization', `${token}`)
       .send(data)
       .end((err, res) => {
+        console.log(' === >>> error updating post excution: ', err);
         expect(res).to.have.status(204)
         done()
       })
   })
 })
-
-async function getClientIdFromUserId (userId) {
-  // Get the client from the Clients table where user_id = userId
-  const client = await sequelize.query(
-    'SELECT id FROM clients WHERE user_id = ?',
-    {
-      replacements: [userId]
-    }
-  )
-
-  // Return the client ID
-  return client[0].id
-}

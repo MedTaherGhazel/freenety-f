@@ -1,10 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const jwt = require('jsonwebtoken')
-const bcrypt = require('bcrypt')
 
 const { authorize } = require('../middlewares/auth.middleware')
-const config = require('../config/config')
 const talent = require('../models').Talent
 
 

@@ -28,7 +28,6 @@ router.post('/register', (req, res, next) => {
     })
     .then(user => {
       console.log(' === >>> logging in.')
-
       // Call the authenticate middleware directly
       authenticate(req, res, () => {
         const token = req.token
@@ -39,10 +38,8 @@ router.post('/register', (req, res, next) => {
         switch (parsedRole) {
           case 'STAFF':
             console.log(' === >>> STAFF detected. sending request.')
-            staff
-              .create({ user_id: user.id })
-              .then(() => {
-                res.status(201).send('Staff Profile Created Successfully.')
+            staff.create({ user_id: user.id }).then(() => {
+              res.status(201).send('Staff Profile Created Successfully.')
             })
             break
           case 'CLIENT':
@@ -69,7 +66,7 @@ router.post('/register', (req, res, next) => {
       })
     })
     .catch(err => {
-      console.error(' == ++++ >>> ', err);
+      console.error(' == ++++ >>> ', err)
       if (err instanceof Sequelize.UniqueConstraintError) {
         const message =
           err.errors[0].path == 'username'
@@ -77,10 +74,10 @@ router.post('/register', (req, res, next) => {
             : 'Email already exists.'
         res.status(406).send(message)
       } else if (err instanceof Sequelize.DatabaseError) {
-        console.error('Database error');
+        console.error('Database error')
         res.status(500).send('Database error')
       } else if (err instanceof Sequelize.ConnectionError) {
-        console.error('Database connection error');
+        console.error('Database connection error')
         res.status(500).send('Database connection error')
       } else {
         next(err)

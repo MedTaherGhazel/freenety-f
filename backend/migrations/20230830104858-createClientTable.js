@@ -1,43 +1,47 @@
-const { DataTypes } = require('sequelize');
-
+/** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Clients', {
       id: {
-        allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
       company_name: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: true
       },
       company_addr: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: true
       },
       client_data: {
-        type: DataTypes.JSON(),
+        type: Sequelize.JSON(),
         defaultValue: {
-          "links": [null]
+          links: [null]
         }
       },
       membership_type: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         defaultValue: 'BASIC'
       },
+      createdAt: {
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        type: Sequelize.DATE
+      },
       user_id: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         references: {
           model: 'users',
           key: 'id'
         }
       }
-    });
+    })
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Clients');
+    await queryInterface.dropTable('Clients')
   }
-};
+}
