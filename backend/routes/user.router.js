@@ -1,15 +1,14 @@
-const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
-const axios = require('axios')
 const express = require('express')
 const router = express.Router()
 
 const { authenticate, authorize } = require('../middlewares/auth.middleware')
-const config = require('../config/config')
+const sequelize = require('../models').sequelize
 const User = require('../models').User
 const staff = require('../models').Staff
 const client = require('../models').Client
 const talent = require('../models').Talent
+
 
 // User routes
 router.post('/register', (req, res, next) => {
@@ -142,13 +141,37 @@ router.put('/users/:id', authorize, (req, res, next) => {
     })
 })
 
-router.delete('/users/:id', authorize, (req, res, next) => {
-  const { id } = req.params
-  User.destroy({ where: { id } })
-    .then(() => {
-      res.json({ message: 'User deleted successfully' })
-    })
-    .catch(next)
-})
+router.delete('/users/:id', authorize, async (req, res, next) => {
+  const { id } = req.params;
+  const transaction = await sequelize.transaction();
 
+  try {
+    const parsedRole = req.user.role.roles[1]
+    console.log(' === >>> parsing role.')
+    switch (parsedRole) {
+      case 'STAFF':
+        console.log(' === >>> STAFF detected. sending request.')
+        await staff.destroy({ where: { user_id: id } }, { transaction });
+        break
+      case 'CLIENT':
+        console.log(' === >>> CLIENT detected. sending request.')
+        await client.destroy({ where: { user_id: id } }, { transaction });
+        break
+      case 'TALENT':
+        console.log(' === >>> TALENT detected. sending request.')
+        await talent.destroy({ where: { user_id: id } }, { transaction });
+        break
+      default:
+        return res.status(400).send('Invalid role.')
+    }
+    await User.destroy({ where: { id } }, { transaction });
+
+    await transaction.commit();
+
+    res.json({ message: 'User and associated profile deleted successfully' });
+  } catch (error) {
+    await transaction.rollback();
+    next(error);
+  }
+});
 module.exports = router

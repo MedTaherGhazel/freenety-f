@@ -78,3 +78,35 @@ describe('Staff Routes test', () => {
   });
 
 })
+
+// Test for the /users/:id route; teststaff user
+describe('users: DELETE /users/:id', () => {
+  let token
+  let userId
+  before(done => {
+    chai
+      .request(app)
+      .post('/api/login')
+      .send({
+        username: 'teststaff',
+        password: 'passwordstaff'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(200)
+        token = res.body.token
+        userId = res.body.id // save user ID
+        done()
+      })
+  })
+
+  it('should delete teststaff user', done => {
+    chai
+      .request(app)
+      .delete(`/api/users/${userId}`)
+      .set('Authorization', `${token}`)
+      .end((err, res) => {
+        expect(res).to.have.status(200)
+        done()
+      })
+  })
+})
