@@ -6,19 +6,97 @@ $green: #07ad90;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
-button{
-  display: inline-flex;
-  align-items: center;
-  inline-size: 70%;
-  margin: 20px;
-  color: white;
-  background-color: transparent;
-  font-size: 20px;
-  cursor: pointer;
-  border-radius: 10%;
-  border-color: white;
 
+/* Sign in button */
+.button-in {
+  appearance: none;
+  background-color: #000000;
+  border: 2px solid #1A1A1A;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  inline-size: 10%;
+  margin: 113;
+  // min-height: 60px;
+  min-width: 0;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+  will-change: transform;
 }
+
+.button-in:disabled {
+  pointer-events: none;
+}
+
+.button-in:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.button-in:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+/* login botton */
+.button-login {
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #1A1A1A;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  // min-height: 60px;
+  min-width: 0;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+  will-change: transform;
+}
+
+.button-login:disabled {
+  pointer-events: none;
+}
+
+.button-login:hover {
+  color: #fff;
+  background-color: #1A1A1A;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.button-login:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+
+/***************nav******************/
 nav{
   position: relative;
   z-index: 99;
@@ -183,9 +261,9 @@ nav .wrap{
   #menu-btn:checked ~ .btn.menu-btn{
     display: none;
   }
-  #close-btn:checked ~ .btn.menu-btn{
-    display: block;
-  }
+  // #close-btn:checked ~ .btn.menu-btn{
+  //   display: block;
+  // }
   .nav-links li{
     margin: 15px 10px;
   }
