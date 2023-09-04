@@ -1,4 +1,6 @@
-$green: #07ad90;
+$green: #41AEA9;
+$dark_green : #213E3B;
+$light_green1:#E8FFFF;
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 *{
   margin: 0;
@@ -7,92 +9,129 @@ $green: #07ad90;
   font-family: 'Poppins', sans-serif;
 }
 
-/* Sign in button */
-.button-in {
-  appearance: none;
-  background-color: #000000;
-  border: 2px solid #1A1A1A;
-  border-radius: 15px;
+//**************** Log in button ************
+.login-button {
+  --arrow-width: 10px;
+  --arrow-stroke: 2px;
   box-sizing: border-box;
-  color: #FFFFFF;
+  border: 0;
+  border-radius: 20px;
+  color: $dark_green;
+  padding: 1em 1.8em;
+  background: $light_green1;
+  transition: 0.2s background;
+  align-items: center;
+  gap: 0.6em;
+  font-weight: bold;
+  font-size: 14px;
+  margin-left: 5px; 
   cursor: pointer;
-  display: inline-block;
-  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 16px;
-  font-weight: 600;
-  line-height: normal;
-  inline-size: 10%;
-  margin: 113;
-  // min-height: 60px;
-  min-width: 0;
-  outline: none;
-  padding: 16px 24px;
-  text-align: center;
-  text-decoration: none;
-  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  width: 100%;
-  will-change: transform;
 }
 
-.button-in:disabled {
-  pointer-events: none;
+.login-button .arrow-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.button-in:hover {
-  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-  transform: translateY(-2px);
+.login-button .arrow {
+  margin-top: 1px;
+  width: var(--arrow-width);
+  background: var(--primary-color);
+  height: var(--arrow-stroke);
+  position: relative;
+  transition: 0.2s;
 }
 
-.button-in:active {
-  box-shadow: none;
-  transform: translateY(0);
-}
-/* login botton */
-.button-login {
-  appearance: none;
-  background-color: transparent;
-  border: 2px solid #1A1A1A;
-  border-radius: 15px;
+.login-button .arrow::before {
+  content: "";
   box-sizing: border-box;
-  color: #000000;
-  cursor: pointer;
+  position: absolute;
+  border: solid var(--secondary-color);
+  border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
   display: inline-block;
-  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 16px;
-  font-weight: 600;
-  line-height: normal;
-  margin: 0;
-  // min-height: 60px;
-  min-width: 0;
-  outline: none;
-  padding: 16px 24px;
-  text-align: center;
-  text-decoration: none;
-  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  width: 100%;
-  will-change: transform;
+  top: -3px;
+  right: 3px;
+  transition: 0.2s;
+  padding: 3px;
+  transform: rotate(-45deg);
 }
 
-.button-login:disabled {
-  pointer-events: none;
+.login-button:hover {
+  background-color: $dark_green;
+  color: $light_green1;
 }
 
-.button-login:hover {
-  color: #fff;
-  background-color: #1A1A1A;
-  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-  transform: translateY(-2px);
+.login-button:hover .arrow {
+  background: var(--secondary-color);
 }
 
-.button-login:active {
-  box-shadow: none;
-  transform: translateY(0);
+.login-button:hover .arrow:before {
+  right: 0;
+}
+
+//**************** Sign in button ************
+.signin-button {
+  --primary-color: #213E3B;;
+  --secondary-color: #fff;
+  --hover-color: #111;
+  --arrow-width: 10px;
+  --arrow-stroke: 2px;
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 20px;
+  color: var(--secondary-color);
+  padding: 1em 1.8em;
+  background: var(--primary-color);
+  transition: 0.2s background;
+  align-items: center;
+  gap: 0.6em;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 4px;
+}
+
+.signin-button .arrow-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signin-button .arrow {
+  margin-top: 1px;
+  width: var(--arrow-width);
+  background: var(--primary-color);
+  height: var(--arrow-stroke);
+  position: relative;
+  transition: 0.2s;
+}
+
+.signin-button .arrow::before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  border: solid var(--secondary-color);
+  border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
+  display: inline-block;
+  top: -3px;
+  right: 3px;
+  transition: 0.2s;
+  padding: 3px;
+  transform: rotate(-45deg);
+}
+
+.signin-button:hover {
+  background-color: $light_green1;
+  color: $dark_green;
+}
+
+.signin-button:hover .arrow {
+  background: var(--secondary-color);
+}
+
+.signin-button:hover .arrow:before {
+  right: 0;
 }
 
 
@@ -101,8 +140,8 @@ nav{
   position: relative;
   z-index: 99;
   width: 100%;
-
   background: $green;
+  
 }
 nav .wrap{
   position: relative;
@@ -130,14 +169,14 @@ nav .wrap{
 .nav-links li a{
   color: #f2f2f2;
   text-decoration: none;
-  font-size: 18px;
-  font-weight: 500;
-  padding: 9px 15px;
-  border-radius: 5px;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 1em 1.4em;
+  border-radius: 20px;
   transition: all 0.3s ease;
 }
 .nav-links li a:hover{
-  background: #3A3B3C;
+  background: $dark_green;
 }
 .nav-links .mobile-item{
   display: none;
@@ -344,6 +383,12 @@ nav .wrap{
   }
   .content .row header{
     font-size: 19px;
+  }
+  .login-button{
+    width: 100%;
+  }
+  .signin-button{
+    width: 100%;
   }
 }
 nav input{
