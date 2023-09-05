@@ -118,7 +118,7 @@ button:active {
   width: 100%;
   height: 60vh;
   margin-top: 50px;
-  border-radius: 300px 0px 0px 90px;
+  border-radius: 300px 0px 0px 300px;
   background: linear-gradient(270deg, #191C1F -3.66%, rgba(31, 186, 178, 0.84) 69.27%);
 
 }
@@ -213,7 +213,7 @@ button:active {
 }
 .card3-right img{
   margin-top: 00px;
-  width: 430px;
+  width: 630px;
   height: auto;
   flex-shrink: 0;
   transition: transitionIn 1s;
@@ -240,8 +240,57 @@ button:active {
   line-height:1.5;
 }
 
+//------------card5---------------
+.ff
+{
+  display:grid;
+  grid-template-columns: 1fr 1.3fr 1fr;
+  width: 100%;
+  height: 87vh;
+  margin-top: 50px;
+  background: linear-gradient(90deg, rgba(25,28,31,1) 50%, rgba(65,195,188,1) 50%);
+  
+}
+.header-left{
+  font-size: 50px;
+  color: $light_green1;
+  text-align: center;
+}
+.list-left{
+  color: $light_green1;
+  font-size: 25px;
+  font-weight: 600;
+}
+.list-left li{
+  margin-bottom: 200px;
+}
+.header-right{
+  font-size: 50px;
+  color: $dark_green;
+  text-align: center;
+  font-weight: 600;
 
+}
+.list-right{
+  color: $dark_green;
+  font-size: 25px;
+  font-weight: 600;
+}
+.list-right li{
+  margin-bottom: 200px;
+}
 
+.ff-imgR{
+  width: 250px;
+  margin-left: 150px;
+  margin-top: 0px;
+}
+.ff-imgL{
+  width: 245px;
+  margin-top: 30px;
+  margin-left: 80px;
+
+}
 
 
 
@@ -317,11 +366,55 @@ button:active {
  .card3-right img{
   margin-top: 0px;
   margin-left:0px;
-  width: 250px;
+  width: 170px;
   height: auto;
   flex-shrink: 0;
  }
  .card-3-sub-head{
   font-size: 13pt !important;
  }
+
+ //card5
+
+ .ff
+{
+  display:grid;
+  grid-template-columns: 1fr 1.3fr 1fr;
+  width: 100%;
+  height: 87vh;
+  margin-top: 50px;
+  background: linear-gradient(90deg, rgba(25,28,31,1) 50%, rgba(65,195,188,1) 50%);
+  
 }
+.header-left{
+  font-size: 20px;
+}
+.list-left{
+  font-size: 14px;
+}
+.list-left li{
+  margin-bottom: 150px;
+}
+.header-right{
+  font-size: 20px;
+ 
+
+}
+.list-right{
+  font-size: 14px;
+
+}
+.list-right li{
+  margin-bottom: 150px;
+}
+.ff-imgR{
+margin-top: 200px;
+ width: 30%;
+
+}
+.ff-imgL{
+  width: 30%;
+}
+}
+
+
