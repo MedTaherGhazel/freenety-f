@@ -15,6 +15,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete'
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SearchComponent } from './search/search.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { SearchComponent } from './search/search.component';
     SigninTalentComponent,
     SigninClientComponent,
     NavbarComponent,
-    SearchComponent
+    SearchComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

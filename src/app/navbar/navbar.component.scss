@@ -140,7 +140,7 @@ nav{
   position: relative;
   z-index: 99;
   width: 100%;
-  background: $green;
+  background: $light_green1;
   
 }
 nav .wrap{
@@ -155,7 +155,7 @@ nav .wrap{
   justify-content: space-between;
 }
 .wrap .logo a{
-  color: #f2f2f2;
+  color: $dark_green;
   font-size: 30px;
   font-weight: 600;
   text-decoration: none;
@@ -167,7 +167,7 @@ nav .wrap{
   list-style: none;
 }
 .nav-links li a{
-  color: #f2f2f2;
+  color: $dark_green;
   text-decoration: none;
   font-size: 15px;
   font-weight: bold;
@@ -177,6 +177,7 @@ nav .wrap{
 }
 .nav-links li a:hover{
   background: $dark_green;
+  color: $light_green1;
 }
 .nav-links .mobile-item{
   display: none;
