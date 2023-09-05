@@ -5,13 +5,19 @@ import { HomeComponent } from './home/home.component';
 import { SigninComponent } from './auth/signup/signin.component';
 import { SigninTalentComponent } from './auth/signup-talent/signin-talent.component';
 import { SigninClientComponent } from './auth/signup-client/signin-client.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { SearchComponent } from './search/search.component';
+import { TalentDashboardComponent } from './talent-dashboard/talent-dashboard/talent-dashboard.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent ,title: 'Home page'},
   { path: 'login', component: LoginComponent },
+  { path: 'navbar', component: NavbarComponent },
+  { path: 'search', component: SearchComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'signin-talent', component:SigninTalentComponent},
-  { path: 'signin-client', component:SigninClientComponent}
+  { path: 'signin-client', component:SigninClientComponent},
+  { path: 'talent-dashboard', component:TalentDashboardComponent}
 ];
 
 @NgModule({

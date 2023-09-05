@@ -1,48 +1,48 @@
-<a href=""><h1>Freenety</h1></a>
 <div class="wrapper">
-<div class="rec-prism">
-<div class="face face-front">
- <div class="content">
-   <h1>Sign up to here a talent
-   </h1>
-   <form onsubmit="event.preventDefault()">
-   <div class="field-wrapper">
-<div class="fullname">
-<input type="text" name="firstname" placeholder=" ">
-<label class="name-label">First Name</label>
-<input type="text" name="lastname" placeholder=" ">
-<label class="last-label">Last Name</label>
-</div>
-</div>
-<div class="field-wrapper">
-       <input type="text" name="company" placeholder="company">
-       <label>Company/Organisation name</label>
-     </div>
-<div class="field-wrapper">
-       <input type="email" name="email" placeholder="email">
-       <label>Work email adress</label>
-     </div>
+  <div class="rec-prism">
+    <div class="face face-front">
+      <div class="content">
+        <h1>Sign up as client</h1>
+        <form (submit)="onSignup(signupForm)" #signupForm="ngForm" *ngIf="!isLoading">
+          <div class="field-wrapper">
+            <div class="fullname">
+              <input matInput type="text" ngModel name="firstname" placeholder="firstname" #firstnameInput required>
+              <label class="name-label">First Name</label>
 
-<div class="field-wrapper">
-       <input type="number" name="phone" placeholder="phone">
-       <label>Phone number</label>
-     </div>
-     <div class="field-wrapper">
-       <input type="password" name="password" placeholder="password" autocomplete="new-password">
-       <label>Password</label>
-     </div>
-     <div class="field-wrapper">
-       <input type="password" name="password" placeholder="password" autocomplete="new-password">
-       <label>Confirm password</label>
-     </div>
-     <div class="field-wrapper">
-       <button type="submit">Create account</button>
+              <input matInput type="text" ngModel name="lastname" placeholder="lastname" #lastnameInput required>
+              <label class="last-label">Last Name</label>
+            </div>
+          </div>
+          <div class="field-wrapper">
+            <input matInput type="text" ngModel name="company" placeholder="company" #companyInput required>
+            <label>Company/Organisation name</label>
+          </div>
+          <div class="field-wrapper">
+            <input matInput type="email" ngModel name="email" placeholder="email" #emailInput required>
+            <label>Work email address</label>
+          </div>
 
-     </div>
-     <span class="psw" onclick="showForgotPassword()">Forgot Password?   </span>
-     <span class="signup" onclick="showSignup()">Not a user?  Sign up</span>
-   </form>
- </div>
-</div>
-</div>
+          <div class="field-wrapper">
+            <input matInput type="number" name="phone" ngModel placeholder="phone" #phoneInput required>
+            <label>Phone number</label>
+          </div>
+          <div class="field-wrapper">
+            <input matInput type="password" ngModel name="password" placeholder="password" autocomplete="new-password" #passwordInput required>
+            <label>Password</label>
+          </div>
+          <div class="field-wrapper">
+            <input matInput type="password" name="confirmPassword" placeholder="password" autocomplete="new-password" ngModel required>
+            <label>Confirm password</label>
+          </div>
+          <div class="field-wrapper">
+            <button >Create account</button>
+          </div>
+        </form>
+
+
+        <!-- <span class="psw" (click)="showForgotPassword()">Forgot Password?</span><br>
+        <span class="signup" (click)="showSignup()"><a href="signin" style="text-decoration: none;">Already have an account? Sign in</a></span> -->
+      </div>
+    </div>
+  </div>
 </div>

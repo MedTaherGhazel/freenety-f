@@ -1,11 +1,10 @@
-<a href=""><img src="../../assets/images/freenety.png" alt=""></a>
 <div class="wrapper">
   <div class="rec-prism">
     <div class="face face-front">
       <div class="content">
         <h1>Sign up as client</h1>
         <form (submit)="onSignup(signupForm)" #signupForm="ngForm" *ngIf="!isLoading">
-          <!-- <div class="field-wrapper">
+          <div class="field-wrapper">
             <div class="fullname">
               <input matInput type="text" ngModel name="firstname" placeholder="firstname" #firstnameInput required>
               <label class="name-label">First Name</label>
@@ -17,24 +16,24 @@
           <div class="field-wrapper">
             <input matInput type="text" ngModel name="company" placeholder="company" #companyInput required>
             <label>Company/Organisation name</label>
-          </div> -->
+          </div>
           <div class="field-wrapper">
             <input matInput type="email" ngModel name="email" placeholder="email" #emailInput required>
             <label>Work email address</label>
           </div>
 
-          <!-- <div class="field-wrapper">
+          <div class="field-wrapper">
             <input matInput type="number" name="phone" ngModel placeholder="phone" #phoneInput required>
             <label>Phone number</label>
-          </div> -->
+          </div>
           <div class="field-wrapper">
             <input matInput type="password" ngModel name="password" placeholder="password" autocomplete="new-password" #passwordInput required>
             <label>Password</label>
           </div>
-          <!-- <div class="field-wrapper">
+          <div class="field-wrapper">
             <input matInput type="password" name="confirmPassword" placeholder="password" autocomplete="new-password" ngModel required>
             <label>Confirm password</label>
-          </div> -->
+          </div>
           <div class="field-wrapper">
             <button >Create account</button>
           </div>

@@ -14,6 +14,11 @@ import { LoginComponent } from './auth/login/login.component';
 import { SigninComponent } from './auth/signup/signin.component';
 import { SigninTalentComponent } from './auth/signup-talent/signin-talent.component';
 import { SigninClientComponent } from './auth/signup-client/signin-client.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { SearchComponent } from './search/search.component';
+import { FooterComponent } from './footer/footer.component';
+import { TalentDashboardModule } from './talent-dashboard/talent-dashboard.module';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +27,11 @@ import { SigninClientComponent } from './auth/signup-client/signin-client.compon
     LoginComponent,
     SigninComponent,
     SigninTalentComponent,
-    SigninClientComponent
+    SigninClientComponent,
+    NavbarComponent,
+    SearchComponent,
+    FooterComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -34,7 +43,8 @@ import { SigninClientComponent } from './auth/signup-client/signin-client.compon
     RouterLink,
     RouterOutlet,
     MatAutocompleteModule,
-    HttpClientModule
+    HttpClientModule,
+    TalentDashboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

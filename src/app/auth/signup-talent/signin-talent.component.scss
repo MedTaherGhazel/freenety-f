@@ -66,15 +66,21 @@ label{
       font-size: 1.2em;
       color: $green;
     }
-    button{
-      width: 100%;
-        border: none;
-        line-height: 2em;
-        border: 1px solid $green;
-        color: white;
-        background-color: #07ad90;
-        border-radius: 15px;
-        font-family: $font bold;
+    button {
+      width: 200px;
+      margin-left: 70%;
+      background: transparent;
+      line-height: 3em;
+      border: 1px solid $green;
+      background-color: $green;
+      border-radius: $spacing;
+      font-family: $font;
+      cursor: pointer;
+      color: white;
+      &:hover {
+        box-shadow: 5px 5px 20px $green;
+      }
+
     }
     .field-wrapper{
       margin-top: $spacing*1.5;
