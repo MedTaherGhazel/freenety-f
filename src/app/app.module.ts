@@ -16,6 +16,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SearchComponent } from './search/search.component';
 import { FooterComponent } from './footer/footer.component';
+import { TalentDashboardModule } from './talent-dashboard/talent-dashboard.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FooterComponent } from './footer/footer.component';
     SigninClientComponent,
     NavbarComponent,
     SearchComponent,
-    FooterComponent
+    FooterComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,8 @@ import { FooterComponent } from './footer/footer.component';
     RouterOutlet,
     BrowserAnimationsModule,
     MatAutocompleteModule,
-    HttpClientModule
+    HttpClientModule,
+    TalentDashboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

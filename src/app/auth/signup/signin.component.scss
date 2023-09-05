@@ -76,6 +76,7 @@ display: none;
     font-family: $font;
     cursor: pointer;
     color: white;
+    transition: 0.4s;
     &:hover {
       box-shadow: 5px 5px 20px $green;
     }
