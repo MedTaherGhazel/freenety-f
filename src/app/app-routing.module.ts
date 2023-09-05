@@ -7,7 +7,7 @@ import { SigninTalentComponent } from './auth/signup-talent/signin-talent.compon
 import { SigninClientComponent } from './auth/signup-client/signin-client.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SearchComponent } from './search/search.component';
-import { TalentDashboardComponent } from './talent-dashboard/talent-dashboard/talent-dashboard.component';
+import { FooterComponent } from './footer/footer.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent ,title: 'Home page'},
@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'signin', component: SigninComponent },
   { path: 'signin-talent', component:SigninTalentComponent},
   { path: 'signin-client', component:SigninClientComponent},
-  { path: 'talent-dashboard', component:TalentDashboardComponent}
+  { path: 'app-footer', component:FooterComponent},
 ];
 
 @NgModule({
