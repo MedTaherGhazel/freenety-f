@@ -22,7 +22,7 @@
     "@angular/platform-browser": "^16.1.0",
     "@angular/platform-browser-dynamic": "^16.1.0",
     "@angular/router": "^16.1.0",
-    "axios": "^1.5.0",
+    "axios": "^1.6.0",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
     "chai": "^4.3.8",
